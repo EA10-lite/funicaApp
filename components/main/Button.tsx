@@ -11,51 +11,48 @@ type ButtonProps = {
 };
 
 const Button = ({ label, variant = 'light', onPress, href }: ButtonProps) => {
-  const backgroundColor = variant === 'dark' ? Colors.dark.bg : Colors.light.bg;
-  const color = variant === 'dark' ? Colors.dark.text : Colors.light.text;
+    const backgroundColor = variant === 'dark' ? Colors.dark.bg : Colors.light.bg;
+    const color = variant === 'dark' ? Colors.dark.text : Colors.light.text;
 
-  const buttonStyles = [styles.button, { backgroundColor }];
+    const buttonStyles = [styles.button, { backgroundColor }];
 
-  if (href) {
+    if (href) {
+        return (
+            <Link href={href} style={buttonStyles}>
+                <Text style={[styles.buttonLabel, { color }]}>{label}</Text>
+            </Link>
+        );
+    }
+
     return (
-      <Link href={href} asChild>
-        {/* <Pressable style={buttonStyles} accessibilityRole="button" accessibilityLabel={label}>
-          <Text style={[styles.buttonLabel, { color }]}>{label}</Text>
-        </Pressable> */}
-        { label }
-      </Link>
+        <Pressable
+            onPress={onPress}
+            style={buttonStyles}
+            accessibilityRole="button"
+            accessibilityLabel={label}
+        >
+            <Text style={[styles.buttonLabel, { color }]}>{label}</Text>
+        </Pressable>
     );
-  }
-
-  return (
-    <Pressable
-      onPress={onPress}
-      style={buttonStyles}
-      accessibilityRole="button"
-      accessibilityLabel={label}
-    >
-      <Text style={[styles.buttonLabel, { color }]}>{label}</Text>
-    </Pressable>
-  );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    width: '100%',
-    borderRadius: 133,
-    paddingHorizontal: 16,
-    paddingVertical: 18,
-    shadowColor: '#000', // Shadow color
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 6,
-    elevation: 6,
-  },
-  buttonLabel: {
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
-  },
+    button: {
+        width: '100%',
+        borderRadius: 133,
+        paddingHorizontal: 16,
+        paddingVertical: 18,
+        shadowColor: '#000', // Shadow color
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+        elevation: 6,
+    },
+    buttonLabel: {
+        textAlign: 'center',
+        fontSize: 16,
+        fontWeight: '600',
+    },
 });
 
 export default Button;

@@ -39,11 +39,11 @@ export default function RootLayout() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={isFirstTime ? "onboarding" : "auth"}
+      initialRouteName={isFirstTime ? "onboarding" : "index"}
     >
-      <Stack.Screen name="index" options={{ title: "Home" }} />
+      <Stack.Screen name="index" options={{ title: "Auth" }} />
+      <Stack.Screen name="(app)" options={{ headerShown: false }} />
       <Stack.Screen name="onboarding" options={{ title: "Onboarding" }} />
-      <Stack.Screen name="auth" options={{ title: "Auth" }} />
     </Stack>
   );
 }

@@ -1,28 +1,22 @@
 import React from "react";
 import { View, StyleSheet, Text} from "react-native";
-import { GoBack, LoginWithSocials, Logo, OrDivider } from "@/components/main";
+import { GoBack, Logo, } from "@/components/main";
 import { Formik } from "formik";
-import { signup_schema } from "@/validations/auth";
+import { reset_password_schema } from "@/validations/auth";
 import { Field, Submit } from "@/components/forms";
-import { Link, useRouter } from "expo-router";
 
 type signupProps = {
-    email:      string;
-    password:   string;
+    newPassword:          string;
+    confirmPassword:      string;
 }
 
 const Signin = () => {
-    const router = useRouter();
-
-    const handleSubmit = async (values: signupProps) => {
-        console.log("values: ", values);
-        router.push("/(app)");
-    };
+    const handleSubmit = async (values: signupProps) => {};
 
 
     return (
         <View style={styles.container}>
-            <GoBack />
+            <GoBack label="Forgot Password" />
 
             <View style={styles.logoContainer}>
                 <Logo size="lg" variant="dark" />
@@ -31,41 +25,32 @@ const Signin = () => {
             <View style={styles.formContainer}>
                 <Text style={styles.title}>Login your account</Text>
                 <Formik
-                    initialValues={{ email: "", password: "", remember: true }}
-                    validationSchema={signup_schema}
+                    initialValues={{ newPassword: "", confirmPassword: "" }}
+                    validationSchema={reset_password_schema}
                     onSubmit={(values)=> handleSubmit(values)}
                 >
                     {({ values })=> (
                         <>
                             <Field 
-                                name="email"
-                                placeholder="Enter your email address"
-                                type="email-address"
-                            />
-
-                            <Field 
-                                name="password"
+                                name="newPassword"
                                 isSecureText={true}
                                 type="visible-password"
                                 placeholder="Enter your password"
                             />
 
-                            <View style={styles.checkbox}>
-                                <Link href="/forgot-password" style={styles.boldLink}> Forgot Password </Link>
-                            </View>
+                            <Field 
+                                name="confirmPassword"
+                                isSecureText={true}
+                                type="visible-password"
+                                placeholder="Enter your password"
+                            />
 
                             <Submit 
                                 label="Sign in" 
                                 loading={false} 
-                                disable={values["email"].length <= 0 || values["password"].length <= 0}
+                                disable={values["newPassword"].length <= 0 || values["confirmPassword"].length <= 0}
                             />
                             
-
-                            <OrDivider />
-                            <LoginWithSocials hasText={false} />
-
-
-                            <Text style={styles.link}> Don't have an account ? <Link href={"/signup"} style={styles.boldLink}>Signup</Link></Text>
                         </>
                     )}
                 </Formik>
@@ -94,26 +79,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 24,
     },
-    checkbox: {
-        marginBottom: 24,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    row: {
-        marginVertical: 15,
-    },
-    link: {
-        textAlign: 'center',
-        fontSize: 16,
-        fontWeight: 400,
-        marginTop: 44,
-        color: '#9e9c9d',
-    },
-    boldLink: {
-        fontWeight: '600',
-        color: '#000',
-    }
 });
 
 
