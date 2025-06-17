@@ -1,29 +1,49 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from "react";
+import { Stack } from "expo-router";
+import { SplashScreen } from "@/components/screens";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  const [isFirstTime, setIsFirstTime] = useState<boolean | null>(null);
+  const [isSplashVisible, setIsSplashVisible] = useState<boolean>(true);
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        setTimeout(async () => {
+          const value = await AsyncStorage.getItem('isLoaded');
+          if (value === null) {
+            await AsyncStorage.setItem('isLoaded', 'false');
+            setIsFirstTime(true);
+          } else {
+            setIsFirstTime(value === 'true');
+          }
+          setIsSplashVisible(false);
+        }, 3000);
+      } catch (error) {
+        console.error('Error checking onboarding status:', error);
+        setIsFirstTime(false);
+        setIsSplashVisible(false);
+      }
+    };
+
+    initializeApp();
+  }, []);
+
+  if (isSplashVisible || isFirstTime === null) {
+    return <SplashScreen />;
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={isFirstTime ? "onboarding" : "auth"}
+    >
+      <Stack.Screen name="index" options={{ title: "Home" }} />
+      <Stack.Screen name="onboarding" options={{ title: "Onboarding" }} />
+      <Stack.Screen name="auth" options={{ title: "Auth" }} />
+    </Stack>
   );
 }
