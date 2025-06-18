@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import { signup_schema } from "@/validations/auth";
 import { Field, Submit } from "@/components/forms";
 import { Link, useRouter } from "expo-router";
+import { useSession } from "@/context/AuthContext";
 
 type signupProps = {
     email:      string;
@@ -13,10 +14,11 @@ type signupProps = {
 
 const Signin = () => {
     const router = useRouter();
+    const { signIn } = useSession();
 
     const handleSubmit = async (values: signupProps) => {
-        console.log("values: ", values);
-        router.push("/(app)");
+        signIn();
+        router.replace("/(app)");
     };
 
 

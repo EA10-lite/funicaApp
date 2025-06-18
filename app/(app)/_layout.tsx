@@ -8,6 +8,8 @@ export default function TabLayout() {
     <Tabs
         screenOptions={{
             headerShown: false,
+            tabBarActiveTintColor: '#000',
+            tabBarInactiveTintColor: '#b9bdbe',
             tabBarStyle: Platform.select({
                 ios: {
                     position: 'absolute',
@@ -26,28 +28,28 @@ export default function TabLayout() {
             name="cart"
             options={{
             title: 'Cart',
-                tabBarIcon: ({ color }) => <Feather name="shopping-bag" size={24} color="black" />,
+                tabBarIcon: ({ color }) => <Feather name="shopping-bag" size={24} color={color} />,
             }}
         />
         <Tabs.Screen
             name="order"
             options={{
             title: 'Order',
-                tabBarIcon: ({ color }) => <AntDesign name="shoppingcart" size={24} color="black" />,
+                tabBarIcon: ({ color }) => <AntDesign name="shoppingcart" size={24} color={color} />,
             }}
         />
         <Tabs.Screen
             name="wallet"
             options={{
             title: 'Wallet',
-                tabBarIcon: ({ color }) => <Entypo name="wallet" size={24} color="black" />,
+                tabBarIcon: ({ color }) => <Entypo name="wallet" size={24} color={color} />,
             }}
         />
         <Tabs.Screen
             name="profile"
             options={{
             title: 'Profile',
-                tabBarIcon: ({ color }) => <FontAwesome6 name="circle-user" size={24} color="black" />,
+                tabBarIcon: ({ color }) => <FontAwesome6 name="circle-user" size={24} color={color} />,
             }}
         />
     </Tabs>

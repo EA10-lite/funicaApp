@@ -1,49 +1,21 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useState } from "react";
-import { Stack } from "expo-router";
-import { SplashScreen } from "@/components/screens";
+import React from 'react';
+import { SessionProvider } from '@/context/AuthContext';
+import { Stack } from 'expo-router';
 
 export default function RootLayout() {
-  const [isFirstTime, setIsFirstTime] = useState<boolean | null>(null);
-  const [isSplashVisible, setIsSplashVisible] = useState<boolean>(true);
-
-  useEffect(() => {
-    const initializeApp = async () => {
-      try {
-        setTimeout(async () => {
-          const value = await AsyncStorage.getItem('isLoaded');
-          if (value === null) {
-            await AsyncStorage.setItem('isLoaded', 'false');
-            setIsFirstTime(true);
-          } else {
-            setIsFirstTime(value === 'true');
-          }
-          setIsSplashVisible(false);
-        }, 3000);
-      } catch (error) {
-        console.error('Error checking onboarding status:', error);
-        setIsFirstTime(false);
-        setIsSplashVisible(false);
-      }
-    };
-
-    initializeApp();
-  }, []);
-
-  if (isSplashVisible || isFirstTime === null) {
-    return <SplashScreen />;
-  }
-
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-      initialRouteName={isFirstTime ? "onboarding" : "index"}
-    >
-      <Stack.Screen name="index" options={{ title: "Auth" }} />
-      <Stack.Screen name="(app)" options={{ headerShown: false }} />
-      <Stack.Screen name="onboarding" options={{ title: "Onboarding" }} />
-    </Stack>
+    <SessionProvider>
+      <Stack 
+        screenOptions={{ headerShown: false }} 
+        // initialRouteName='splash'
+      >
+        <Stack.Screen name="onboarding" options={{ title: "Onboarding" }} />
+        <Stack.Screen name="auth" options={{ title: "Auth" }} />
+        <Stack.Screen name="search" options={{ title: "Search" }} />
+        <Stack.Protected guard={true}>
+          <Stack.Screen name="(app)" />
+        </Stack.Protected>
+      </Stack>
+    </SessionProvider>
   );
 }

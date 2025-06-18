@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button } from "@/components/main";
 import { Image } from "expo-image";
 import { View, StyleSheet, Text, ImageSourcePropType } from "react-native";
+import { router } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const onboardingImage1 = require("@/assets/images/img-1.jpg");
 const onboardingImage2 = require("@/assets/images/img-3.jpg");
@@ -30,6 +32,10 @@ const Onboarding = () => {
     const goToNext = () => {
         if(step < 3) {
             setStep(prevStep => prevStep + 1);
+        }
+        else {
+            AsyncStorage.setItem('isOnboarded', 'true');
+            router.replace("/auth");
         }
     }
 

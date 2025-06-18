@@ -1,21 +1,26 @@
-import { Link } from "expo-router";
-import { Text, View, StyleSheet} from "react-native";
+import { Header } from "@/components/main";
+import { Products } from "@/containers";
+import products from "@/data/products";
+import { StyleSheet, SafeAreaView, ScrollView} from "react-native";
 
 const Index = () => {
   return (
-    <View style={styles.container}>
-      <Text> Home </Text>
-      <Link href="/onboarding"> onboarding </Link>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Header />
+        <Products 
+          products={products}
+        />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  }
+  },
 })
 
 

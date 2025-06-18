@@ -3,3 +3,8 @@ export { default as Logo } from "./Logo";
 export { default as OrDivider } from "./OrDivider";
 export { default as GoBack } from "./GoBack";
 export { default as LoginWithSocials } from "./LoginWithSocials";
+export { default as Favorites } from "./Favorites";
+export { default as Header } from "./Header";
+export { default as NoResult } from "./NoResult";
+export { default as SearchInput } from "./SearchInput";
+export { default as Loading } from "./Loading"; 
