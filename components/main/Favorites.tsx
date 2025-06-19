@@ -1,3 +1,4 @@
+import { useFavoriteContext } from "@/context/FavoritesContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { View, StyleSheet, Pressable} from "react-native";
@@ -7,23 +8,12 @@ type FavoritesProps = {
 }
 
 const Favorites = ({ id } : FavoritesProps) => {
-    const [favorites, setFavorites] = useState<string[]>([]);
-
-    const toggleFavorites = () => {
-        if(favorites.includes(id)) {
-            setFavorites(prevFavorites => prevFavorites.filter(item => item !== id));
-        }
-        else {
-            const tempFavorites = [...favorites, id];
-            setFavorites(tempFavorites);
-        }
-    }
-
+    const { isInFavorites, toggleFavorites } = useFavoriteContext();
 
     return (
         <View style={styles.favorite}>
-            <Pressable onPress={toggleFavorites}>
-                { favorites.includes(id) ? (
+            <Pressable onPress={()=> toggleFavorites(id)}>
+                { isInFavorites(id) ? (
                     <MaterialCommunityIcons name="cards-heart" size={24} color="#fff" />
                 ) : (
                     <MaterialCommunityIcons name="cards-heart-outline" size={24} color="#fff" />

@@ -2,16 +2,16 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 type LogoProps = {
-    size:       'sm' | 'lg';
+    size?:       'xs' | 'sm' | 'lg';
     variant?:   'dark' | 'light',
     hasText?:   boolean;
 }
 
-const Logo = ({ size, variant = "light", hasText} : LogoProps) => {
-    const width = size === 'sm' ? 12 : 32;
-    const height = size === 'sm' ? 9 : 20;
-    const rounderCorners = size === 'sm' ? 8 : 24;
-    const marginBottom = size === 'sm' ? 3 : 10;
+const Logo = ({ size = 'sm', variant = "light", hasText} : LogoProps) => {
+    const width = size === 'xs' ? 10 : size === 'sm' ? 12 : 32;
+    const height = size === 'xs' ? 7 :  size === 'sm' ? 9 : 20;
+    const rounderCorners = size === 'xs' ? 6 :  size === 'sm' ? 8 : 24;
+    const marginBottom = size === 'xs' ? 3 :  size === 'sm' ? 3 : 10;
     const backgroundColor = variant === "dark" ? "#000" : "#fff";
 
     return (

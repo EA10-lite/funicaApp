@@ -20,10 +20,6 @@ const Search = () => {
     const [results, setResults] = useState<Product[]>([]);
     const debounceRef = useRef<number | null>(null);
 
-    const handleSearch = () => {
-        
-    }
-
     useEffect(() => {
         if (!search.trim()) {
             setResults([]);

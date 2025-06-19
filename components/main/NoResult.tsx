@@ -3,7 +3,7 @@ import {  View, StyleSheet, Text } from "react-native";
 import { Image } from "expo-image";
 
 type NoResultProps = {
-    title:  string;
+    title:      string;
     subtitle:   string;
 }
 
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingHorizontal: 24,
     },
     noResult: {
         display: 'flex',
