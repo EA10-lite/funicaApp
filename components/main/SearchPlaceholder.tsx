@@ -1,5 +1,5 @@
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import { router } from "expo-router";
 
@@ -9,6 +9,7 @@ const SearchPlaceholder = () => {
             <Pressable style={styles.search} onPress={()=> router.push("/search")}>
                 <Ionicons name="search-outline" size={20} color="#b9bdbe" />
                 <Text style={styles.placeholder}>Search</Text>
+                <MaterialCommunityIcons name="tune-variant" size={20} color="black" />
             </Pressable>
         </View>
     )
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '400',
         color: '#b9bdbe',
+        flexGrow: 1,
     }
 });
 

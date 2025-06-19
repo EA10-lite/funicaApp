@@ -1,5 +1,5 @@
 import { Header } from "@/components/main";
-import { Products } from "@/containers";
+import { Categories, Products, SpecialOffers } from "@/containers";
 import products from "@/data/products";
 import { StyleSheet, SafeAreaView, ScrollView} from "react-native";
 
@@ -8,6 +8,8 @@ const Index = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <Header />
+        <SpecialOffers />
+        <Categories />
         <Products 
           products={products}
         />

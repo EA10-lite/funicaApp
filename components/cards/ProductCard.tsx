@@ -10,6 +10,7 @@ type ProductCardProps = {
     title:      string;
     rating:     number;
     imageUri:   string;
+    unitsLeft:  number;
 }
 
 const ProductCard = ({
@@ -18,11 +19,13 @@ const ProductCard = ({
     title,
     rating,
     imageUri,
+    unitsLeft,
 } : ProductCardProps) => {
     return (
         <View style={styles.card}>
             <View style={styles.imgContainer}>
                 <Favorites id={id} />
+                <Image source={imageUri} style={styles.img} />
             </View>
             <View style={styles.cardDetails}>
                 <Text style={styles.title}>{ title }</Text>
@@ -31,7 +34,7 @@ const ProductCard = ({
                     <Text style={styles.ratingLabel}>{ rating }</Text>
 
                     <View style={styles.itemSold}>
-                        <Text style={styles.count}> 7,843 sold </Text>
+                        <Text style={styles.count}> { unitsLeft } items left </Text>
                     </View>
                 </View>
                 <Text style={styles.price}>{ price }</Text>
@@ -55,6 +58,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 16,
         position: 'relative',
+    },
+    img: {
+        width: 120,
+        height: 120,
+        objectFit: 'cover',
     },
     cardDetails: {},
     rating: {

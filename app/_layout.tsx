@@ -1,8 +1,7 @@
 import React from 'react';
 import { SessionProvider } from '@/context/AuthContext';
 import { Stack } from 'expo-router';
-import CartProvider from '@/context/CartContext';
-import { FavoritesProvider } from '@/context';
+import { FavoritesProvider, CartProvider } from '@/context';
 
 export default function RootLayout() {
   return (

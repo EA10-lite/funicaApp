@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     gap: 16,
     backgroundColor: "#fff",
     borderRadius: 16,
-    padding: 15,
+    paddingHorizontal: 24,
     marginBottom: 24,
   },
   imgContainer: {
