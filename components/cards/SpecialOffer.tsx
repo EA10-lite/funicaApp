@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         gap: 24,
     },
     imgContainer: {
-        flex: 0.5,
+        width: '50%',
     },
     img: {
         width: 150,

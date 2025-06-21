@@ -63,7 +63,14 @@ const Onboarding = () => {
                     <View style={[styles.slider, step === 2 && styles.activeSlider]} />
                     <View style={[styles.slider, step === 3 && styles.activeSlider]} />
                 </View>
-                <Button label={step === 3 ? "Get Started" : "Next"} onPress={goToNext} variant="dark" />
+
+                <View style={{ width: "100%" }}>
+                    <Button 
+                        label={step === 3 ? "Get Started" : "Next"} 
+                        onPress={goToNext} 
+                        variant="dark" 
+                    />
+                </View>
             </View>
         </View>
     )
@@ -87,6 +94,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         gap: 32,
         padding: 20,
+        width: "100%",
     },
     image: {
         height: "100%",

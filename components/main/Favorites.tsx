@@ -4,19 +4,20 @@ import React, { useState } from "react";
 import { View, StyleSheet, Pressable} from "react-native";
 
 type FavoritesProps = {
-    id:     string;
+    id:         string;
+    hasWrapper?: boolean;
 }
 
-const Favorites = ({ id } : FavoritesProps) => {
+const Favorites = ({ id, hasWrapper = true} : FavoritesProps) => {
     const { isInFavorites, toggleFavorites } = useFavoriteContext();
 
     return (
-        <View style={styles.favorite}>
+        <View style={[hasWrapper && styles.favorite]}>
             <Pressable onPress={()=> toggleFavorites(id)}>
                 { isInFavorites(id) ? (
-                    <MaterialCommunityIcons name="cards-heart" size={24} color="#fff" />
+                    <MaterialCommunityIcons name="cards-heart" size={24} color={hasWrapper ? "#fff" : "#000"} />
                 ) : (
-                    <MaterialCommunityIcons name="cards-heart-outline" size={24} color="#fff" />
+                    <MaterialCommunityIcons name="cards-heart-outline" size={24} color={hasWrapper ? "#fff" : "#000"} />
                 )}
             </Pressable>
         </View>

@@ -37,6 +37,8 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (data: Omit<CartItem, "quantity">) => {
+    console.log("Adding to cart:", data);
+    
     let temp_cart = [...cart];
     const existingItem = temp_cart.find((item) => item.id === data.id);
 

@@ -1,16 +1,18 @@
 import React from "react";
 import { Image } from "expo-image";
+import { Link } from "expo-router";
 import { View, StyleSheet, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Favorites } from "../main";
 
 type ProductCardProps = {
     id:         string;
-    price:      string;
+    price:      number;
     title:      string;
     rating:     number;
     imageUri:   string;
     unitsLeft:  number;
+    category?:  string;
 }
 
 const ProductCard = ({
@@ -22,30 +24,38 @@ const ProductCard = ({
     unitsLeft,
 } : ProductCardProps) => {
     return (
-        <View style={styles.card}>
-            <View style={styles.imgContainer}>
-                <Favorites id={id} />
-                <Image source={imageUri} style={styles.img} />
-            </View>
-            <View style={styles.cardDetails}>
-                <Text style={styles.title}>{ title }</Text>
-                <View style={styles.rating}>
-                    <FontAwesome name="star" size={16} color="black" />
-                    <Text style={styles.ratingLabel}>{ rating }</Text>
-
-                    <View style={styles.itemSold}>
-                        <Text style={styles.count}> { unitsLeft } items left </Text>
-                    </View>
+        <Link 
+            href={`/details/${id}`}
+            style={styles.cardContainer}
+        >
+            <View style={styles.card}>
+                <View style={styles.imgContainer}>
+                    <Favorites id={id} />
+                    <Image source={imageUri} style={styles.img} />
                 </View>
-                <Text style={styles.price}>{ price }</Text>
+                <View style={styles.cardDetails}>
+                    <Text style={styles.title}>{ title }</Text>
+                    <View style={styles.rating}>
+                        <FontAwesome name="star" size={16} color="black" />
+                        <Text style={styles.ratingLabel}>{ rating }</Text>
+
+                        <View style={styles.itemSold}>
+                            <Text style={styles.count}> { unitsLeft } items left </Text>
+                        </View>
+                    </View>
+                    <Text style={styles.price}>${ price }</Text>
+                </View>
             </View>
-        </View>
+        </Link>
     )
 }
 
 const styles = StyleSheet.create({
-    card: {
+    cardContainer: {
         width: '47%',
+    },
+    card: {
+        width: '100%'
     },
     imgContainer: {
         backgroundColor: "#f3f3f3",
@@ -60,9 +70,9 @@ const styles = StyleSheet.create({
         position: 'relative',
     },
     img: {
-        width: 120,
-        height: 120,
-        objectFit: 'cover',
+        width: "100%",
+        height: "100%",
+        resizeMode: 'contain',
     },
     cardDetails: {},
     rating: {

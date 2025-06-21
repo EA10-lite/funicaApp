@@ -10,9 +10,11 @@ type ProductsProps = {
 type Product = {
     id:         string;
     title:      string;
-    price:      string;
+    price:      number;
     rating:     number;
     imageUri:   string;
+    unitsLeft:  number;
+    category:   string;
 }
 
 const Products = ({ products } : ProductsProps) => {

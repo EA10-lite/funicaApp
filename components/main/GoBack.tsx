@@ -30,9 +30,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 64,
         paddingHorizontal: 24,
+        zIndex: 10,
     },
     label: {
         fontSize: 18,
+        textTransform: 'capitalize',
         fontWeight: '600',
     }
 })

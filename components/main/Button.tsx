@@ -38,7 +38,8 @@ const Button = ({ label, variant = 'light', onPress, href }: ButtonProps) => {
 
 const styles = StyleSheet.create({
     button: {
-        width: '100%',
+        maxWidth: '100%',
+        flexGrow: 1,
         borderRadius: 133,
         paddingHorizontal: 16,
         paddingVertical: 18,
