@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Text, View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import { Logo, NoResult } from "@/components/main";
+import { Logo, NoResult, PageHeader } from "@/components/main";
 import { CartCard } from "@/components/cards";
 import { useCartContext } from "@/context/CartContext";
 
@@ -18,10 +18,7 @@ const Cart = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cartContainer}>
-        <View style={styles.header}>
-          <Logo variant="dark" size='xs' />
-          <Text style={styles.title}>My Cart</Text>
-        </View>
+        <PageHeader pageTitle="My Cart" />
 
         { cart.length <= 0 ? (
           <View style={styles.emptyCart}>
@@ -50,10 +47,10 @@ const Cart = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   cartContainer: {
     flex: 1,
+    paddingHorizontal: 24,
   },
   header: {
     alignItems: 'center',

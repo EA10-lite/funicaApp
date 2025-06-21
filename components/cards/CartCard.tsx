@@ -1,7 +1,8 @@
-import React from "react";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useState } from "react";
+import { AntDesign, Feather } from "@expo/vector-icons";
 import { View, StyleSheet, Text, Image, Pressable } from "react-native";
 import { CartItem, useCartContext } from "@/context/CartContext";
+import { RemoveFromCart } from "../modals";
 
 const CartCard = ({
   id,
@@ -11,28 +12,48 @@ const CartCard = ({
   imageUri,
 } : CartItem) => {
   const { addToCart, removeFromCart } = useCartContext();
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <View style={styles.card}>
       <View style={styles.imgContainer}>
-        {/* <Image source={{ uri: imageUri }} style={styles.image} /> */}
+        <Image source={{ uri: imageUri }} style={styles.image} />
       </View>
       <View style={styles.details}>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.row}>
-          <Text style={styles.price}>{price}</Text>
-          <QuantityBox 
-            quantity={quantity} 
-            addToCart={()=> addToCart({ 
-              id, 
-              title, 
-              price,
-              imageUri,
-            })}
-            removeFromCart={()=> removeFromCart(id)}
+        <View style={[styles.row, { marginBottom: 10, gap: 16 }]}>
+          <Text style={styles.title}>{title}</Text>
+          <Feather 
+            name="trash" 
+            size={20} 
+            color="black" 
+            onPress={()=> setOpen(true)}
           />
         </View>
+
+        <Text style={styles.price}>${price}</Text>
+        <QuantityBox 
+          quantity={quantity} 
+          addToCart={()=> addToCart({ 
+            id, 
+            title, 
+            price,
+            imageUri,
+          })}
+          removeFromCart={()=> removeFromCart(id)}
+        />
       </View>
+
+      
+        <RemoveFromCart 
+          closeModal={()=> setOpen(false)}
+          isOpen={open}
+          item={{
+            id,
+            title,
+            imageUri,
+            price,
+          }}
+        />
     </View>
   );
 };
@@ -66,7 +87,7 @@ const styles = StyleSheet.create({
     gap: 16,
     backgroundColor: "#fff",
     borderRadius: 16,
-    paddingHorizontal: 24,
+    padding: 16,
     marginBottom: 24,
   },
   imgContainer: {
@@ -85,6 +106,7 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 8,
     marginRight: 15,
+    resizeMode: "contain",
   },
   details: {
     flex: 1,
@@ -114,6 +136,7 @@ const styles = StyleSheet.create({
     borderRadius: 133,
     paddingVertical: 6,
     paddingHorizontal: 8,
+    marginTop: 10,
   },
   minus: {},
   add: {},
