@@ -21,7 +21,9 @@ const CartCard = ({
       </View>
       <View style={styles.details}>
         <View style={[styles.row, { marginBottom: 10, gap: 16 }]}>
-          <Text style={styles.title}>{title}</Text>
+          <View style={{ maxWidth: '80%' }}>
+            <Text style={[styles.title]}>{title}</Text>
+          </View>
           <Feather 
             name="trash" 
             size={20} 
@@ -30,17 +32,19 @@ const CartCard = ({
           />
         </View>
 
-        <Text style={styles.price}>${price}</Text>
-        <QuantityBox 
-          quantity={quantity} 
-          addToCart={()=> addToCart({ 
-            id, 
-            title, 
-            price,
-            imageUri,
-          })}
-          removeFromCart={()=> removeFromCart(id)}
-        />
+        <View style={[styles.row, { alignItems: "center"}]}>
+          <Text style={styles.price}>${price}</Text>
+          <QuantityBox 
+            quantity={quantity} 
+            addToCart={()=> addToCart({ 
+              id, 
+              title, 
+              price,
+              imageUri,
+            })}
+            removeFromCart={()=> removeFromCart(id)}
+          />
+        </View>
       </View>
 
       
@@ -52,6 +56,7 @@ const CartCard = ({
             title,
             imageUri,
             price,
+            quantity
           }}
         />
     </View>
@@ -105,11 +110,11 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 8,
-    marginRight: 15,
     resizeMode: "contain",
   },
   details: {
     flex: 1,
+    overflow: 'hidden',
   },
   title: {
     fontSize: 18,

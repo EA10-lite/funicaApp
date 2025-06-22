@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 20,
         paddingVertical: 24,
-        marginBottom: 16,
     },
     title: {
         fontSize: 24,

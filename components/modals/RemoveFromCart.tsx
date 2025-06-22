@@ -1,18 +1,14 @@
 import React, { PropsWithChildren } from "react";
 import { View, StyleSheet, Text, Modal, Pressable } from "react-native";
 import { Button } from "../main";
-import { useCartContext } from "@/context/CartContext";
+import { CartItem, useCartContext } from "@/context/CartContext";
+import { MiniProductCard } from "../cards";
 
 
 type RemoveFromCartProps = PropsWithChildren<{
     closeModal:     ()=> void;
     isOpen:         boolean;
-    item:           {
-        id:         string;
-        title:      string;
-        price:      number;
-        imageUri:   string;
-    }
+    item:           CartItem;
 }>;
 
 const RemoveFromCart = ({ closeModal, children, isOpen, item } : RemoveFromCartProps) => {
@@ -27,11 +23,21 @@ const RemoveFromCart = ({ closeModal, children, isOpen, item } : RemoveFromCartP
         <Modal animationType="slide" transparent={true} visible={isOpen}>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
-                    <View style={styles.titleContainer}>
+                    <View style={styles.modalHeader}>
                         <Text style={styles.title}>Remove From Cart?</Text>
                     </View>
 
-                    <View style={styles.row}>
+                    <View style={styles.modalBody}>
+                        <MiniProductCard 
+                            id={item.id}
+                            title={item.title}
+                            price={item.price}
+                            imageUri={item.imageUri}
+                            quantity={item.quantity}
+                        />
+                    </View>
+
+                    <View style={styles.modalFooter}>
                         <Pressable onPress={closeModal} style={styles.cancelBtn}>
                             <Text style={styles.btnText}>Cancel</Text>
                         </Pressable>
@@ -55,28 +61,33 @@ const styles = StyleSheet.create({
         backgroundColor: '#000000aa',
     },
     modalContent: {
-        height: '50%',
         width: '100%',
-        backgroundColor: '#fff',
+        backgroundColor: '#fcfcfc',
         borderTopRightRadius: 35,
         borderTopLeftRadius: 35,
         position: 'absolute',
         bottom: 0,
         paddingHorizontal: 24,
     },
-    titleContainer: {
+    modalHeader: {
         borderTopRightRadius: 10,
         borderTopLeftRadius: 10,
         paddingHorizontal: 20,
         paddingVertical: 24,
-        marginBottom: 24,
         borderBottomWidth: 1,
         borderBlockColor: '#f3f3f3',
+        backgroundColor: '#fcfcfc'
     },
     title: {
         fontSize: 20,
         fontWeight: '600', 
         textAlign: 'center',
+    },
+    modalBody: {
+        flexGrow: 1,
+        paddingVertical: 24,
+        borderBottomWidth: 1,
+        borderBlockColor: '#f3f3f3',
     },
     cancelBtn: {
         minWidth: '35%',
@@ -92,10 +103,11 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textAlign: 'center',
     },
-    row: {
+    modalFooter: {
         flexDirection: 'row',
         alignItems: 'center',
         gap: 12,
+        paddingVertical: 24,
     },
 })
 

@@ -31,88 +31,90 @@ const ProductDetails = () => {
     }, [id]);
 
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.imgContainer}>
-                <GoBack />
-                <Image 
-                    style={styles.img}
-                    source={product?.imageUri}
-                />
-            </View>
-            <View style={styles.details}>
-                <View style={styles.detailsHeader}>
-                    <View style={styles.row}>
-                        <Text style={styles.title}>{ product?.title }</Text>
-                        <Favorites id={id.toString()} hasWrapper={false}  />
-                    </View>
-
-                    <View style={styles.rating}>
-                        <View style={styles.itemSold}>
-                            <Text style={styles.count}> { product?.unitsLeft } items left </Text>
+        <View style={styles.container}>
+            <GoBack />
+            <ScrollView style={styles.container}>
+                <View style={styles.imgContainer}>
+                    <Image 
+                        style={styles.img}
+                        source={product?.imageUri}
+                    />
+                </View>
+                <View style={styles.details}>
+                    <View style={styles.detailsHeader}>
+                        <View style={styles.row}>
+                            <Text style={styles.title}>{ product?.title }</Text>
+                            <Favorites id={id.toString()} hasWrapper={false}  />
                         </View>
 
-                        <FontAwesome name="star" size={16} color="black" />
-                        <Text style={styles.ratingLabel}>{ product?.rating } (32 reviews) </Text>
-                    </View>
-                </View>
+                        <View style={styles.rating}>
+                            <View style={styles.itemSold}>
+                                <Text style={styles.count}> { product?.unitsLeft } items left </Text>
+                            </View>
 
-                <View style={styles.detailsBody}>
-                    <View style={styles.field}>
-                        <Text style={styles.subtitle}>Description</Text>
-                        <Text style={styles.paragraph}>
-                            This is a detailed description of product {id}. It includes all the features and specifications.
-                        </Text>
-                    </View>
-
-                    <View style={styles.field}>
-                        <Text style={styles.subtitle}>Colors</Text>
-                        <View style={[styles.row, { justifyContent: 'flex-start', gap: 4, marginTop: 12,}]}>
-                            {colors.map((color, index) => (
-                                <View 
-                                    key={index} 
-                                    style={[styles.colorBox, { backgroundColor: color }]} 
-                                    onTouchStart={() => setSelectedColor(color)}
-                                >
-                                    <Pressable onPress={() => setSelectedColor(color)}>
-                                        { selectedColor  === color && <Feather name="check" size={24} color="#fff" />}
-                                    </Pressable>
-                                </View>
-                            ))}
+                            <FontAwesome name="star" size={16} color="black" />
+                            <Text style={styles.ratingLabel}>{ product?.rating } (32 reviews) </Text>
                         </View>
                     </View>
 
-                    <View style={styles.field}>
-                        <Text style={styles.subtitle}>Quantity</Text>
-                    </View>
-                </View>
+                    <View style={styles.detailsBody}>
+                        <View style={styles.field}>
+                            <Text style={styles.subtitle}>Description</Text>
+                            <Text style={styles.paragraph}>
+                                This is a detailed description of product {id}. It includes all the features and specifications.
+                            </Text>
+                        </View>
 
-                <View style={styles.detailsFooter}>
-                    <View>
-                        <Text style={styles.paragraph}>Total Price</Text>
-                        <Text style={styles.title}>${product?.price}</Text>
-                    </View>
-                    { product && (isInCart(product?.id) ? (
-                        <Button 
-                            label="Remove from Cart"
-                            variant="dark"
-                            onPress={()=> removeFromCart(product?.id) }
-                        />
-                    ) : (
-                        <Button 
-                            label="Add to Cart" 
-                            variant="dark"
-                            onPress={() => addToCart({
-                                title: product?.title,
-                                imageUri: product?.imageUri,
-                                price: product?.price,
-                                id: product?.id,
-                            })} 
-                        />
-                    ))}
-                </View>
+                        <View style={styles.field}>
+                            <Text style={styles.subtitle}>Colors</Text>
+                            <View style={[styles.row, { justifyContent: 'flex-start', gap: 4, marginTop: 12,}]}>
+                                {colors.map((color, index) => (
+                                    <View 
+                                        key={index} 
+                                        style={[styles.colorBox, { backgroundColor: color }]} 
+                                        onTouchStart={() => setSelectedColor(color)}
+                                    >
+                                        <Pressable onPress={() => setSelectedColor(color)}>
+                                            { selectedColor  === color && <Feather name="check" size={24} color="#fff" />}
+                                        </Pressable>
+                                    </View>
+                                ))}
+                            </View>
+                        </View>
 
-            </View>
-        </ScrollView>
+                        <View style={styles.field}>
+                            <Text style={styles.subtitle}>Quantity</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.detailsFooter}>
+                        <View>
+                            <Text style={styles.paragraph}>Total Price</Text>
+                            <Text style={styles.title}>${product?.price}</Text>
+                        </View>
+                        { product && (isInCart(product?.id) ? (
+                            <Button 
+                                label="Remove from Cart"
+                                variant="dark"
+                                onPress={()=> removeFromCart(product?.id) }
+                            />
+                        ) : (
+                            <Button 
+                                label="Add to Cart" 
+                                variant="dark"
+                                onPress={() => addToCart({
+                                    title: product?.title,
+                                    imageUri: product?.imageUri,
+                                    price: product?.price,
+                                    id: product?.id,
+                                })} 
+                            />
+                        ))}
+                    </View>
+
+                </View>
+            </ScrollView>
+        </View>
     )
 }
 

@@ -27,7 +27,7 @@ const ProductDetails = () => {
     }, [category]);
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.head}>
                 { category && <GoBack label={category?.toString()} /> }
             </View>
@@ -42,7 +42,7 @@ const ProductDetails = () => {
                     <Products products={data} />
                 )}
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
