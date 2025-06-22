@@ -56,11 +56,13 @@ const Cart = () => {
               <Text style={styles.price}>${getTotalPrice()}</Text>
             </View>
 
-            <Button 
-              label="Checkout"
-              href="/checkout/checkout"
-              variant="dark"
-            />
+            <View style={{ flexGrow: 1,}}>
+              <Button 
+                label="Checkout"
+                href="/checkout/checkout"
+                variant="dark"
+              />
+            </View>
           </View>
         )}
       </View>

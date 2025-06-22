@@ -42,11 +42,14 @@ const RemoveFromCart = ({ closeModal, children, isOpen, item } : RemoveFromCartP
                             <Text style={styles.btnText}>Cancel</Text>
                         </Pressable>
 
-                        <Button 
-                            label="Yes, Remove"
-                            onPress={handleRemoveFromCart}
-                            variant="dark"
-                        />
+                        <View style={{ flexGrow: 1}}>
+                            <Button 
+                                label="Yes, Remove"
+                                onPress={handleRemoveFromCart}
+                                variant="dark"
+                            />
+                        </View>
+
                     </View>
                 </View>
             </View>
