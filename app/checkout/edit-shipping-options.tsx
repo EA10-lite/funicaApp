@@ -8,7 +8,7 @@ const shippingOptions = [
         type: "Economy",
         fee: 10,
         date: "Estimated Arival Dec 20 - 23",
-        iconName: "truck"
+        iconName: "truck-ramp-box"
     },
     {
         type: "Regular",
@@ -55,6 +55,8 @@ const EditShippingOptions = () => {
                                 subtitle={option.date}
                                 price={option.fee}
                                 iconName={option.iconName}
+                                handleClick={()=> setSelectedOption(option)}
+                                isSelected={selectedOption?.type === option.type}
                             />
                         </View>
                     ))}
