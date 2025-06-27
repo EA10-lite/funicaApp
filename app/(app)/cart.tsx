@@ -73,6 +73,7 @@ const Cart = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
   },
   cartContainer: {
     flex: 1,

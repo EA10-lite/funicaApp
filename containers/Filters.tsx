@@ -37,7 +37,6 @@ const Filters = () => {
 
 const styles = StyleSheet.create({
     filters: {
-        paddingHorizontal: 24,
         paddingVertical: 8,
         gap: 12,
         flexDirection: "row",

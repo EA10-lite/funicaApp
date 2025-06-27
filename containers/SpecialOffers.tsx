@@ -29,7 +29,6 @@ const SpecialOffers = () => {
 const styles = StyleSheet.create({
     offers: {
         marginBottom: 24,
-        paddingHorizontal: 24, 
     },
     row: {
         flexDirection: 'row',

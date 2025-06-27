@@ -31,7 +31,6 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     header: {
-        paddingHorizontal: 24,
         marginBottom: 24,
     },
     row: {

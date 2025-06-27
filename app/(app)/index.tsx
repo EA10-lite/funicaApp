@@ -6,7 +6,7 @@ import products from "@/data/products";
 const Index = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView style={{paddingHorizontal: 24 }}>
         <Header />
         <SpecialOffers />
         <Categories />

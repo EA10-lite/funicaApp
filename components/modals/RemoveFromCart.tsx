@@ -12,10 +12,10 @@ type RemoveFromCartProps = PropsWithChildren<{
 }>;
 
 const RemoveFromCart = ({ closeModal, children, isOpen, item } : RemoveFromCartProps) => {
-    const {removeFromCart} = useCartContext();
+    const {removeFromCartCompletely} = useCartContext();
 
     const handleRemoveFromCart = ()=> {
-        removeFromCart(item.id);
+        removeFromCartCompletely(item.id);
         closeModal();
     }
 

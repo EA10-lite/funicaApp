@@ -92,24 +92,26 @@ const ProductDetails = () => {
                             <Text style={styles.paragraph}>Total Price</Text>
                             <Text style={styles.title}>${product?.price}</Text>
                         </View>
-                        { product && (isInCart(product?.id) ? (
-                            <Button 
-                                label="Remove from Cart"
-                                variant="dark"
-                                onPress={()=> removeFromCart(product?.id) }
-                            />
-                        ) : (
-                            <Button 
-                                label="Add to Cart" 
-                                variant="dark"
-                                onPress={() => addToCart({
-                                    title: product?.title,
-                                    imageUri: product?.imageUri,
-                                    price: product?.price,
-                                    id: product?.id,
-                                })} 
-                            />
-                        ))}
+                        <View style={{ flexGrow: 1 }}>
+                            { product && (isInCart(product?.id) ? (
+                                <Button 
+                                    label="Remove from Cart"
+                                    variant="dark"
+                                    onPress={()=> removeFromCart(product?.id) }
+                                />
+                            ) : (
+                                <Button 
+                                    label="Add to Cart" 
+                                    variant="dark"
+                                    onPress={() => addToCart({
+                                        title: product?.title,
+                                        imageUri: product?.imageUri,
+                                        price: product?.price,
+                                        id: product?.id,
+                                    })} 
+                                />
+                            ))}
+                        </View>
                     </View>
 
                 </View>
@@ -211,6 +213,7 @@ const styles = StyleSheet.create({
     detailsFooter: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: "space-between",
         gap: 32,
     },
 });

@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
         height: 100,
     },
     body: {
+        paddingHorizontal: 24,
         flexGrow: 1,
     },
     product: {},

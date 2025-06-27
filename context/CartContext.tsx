@@ -17,10 +17,11 @@ export interface CartItem {
 }
 
 interface CartContextType {
-  cart: CartItem[];
-  addToCart: (item: Omit<CartItem, "quantity">) => void;
-  removeFromCart: (id: string) => void;
-  isInCart: (id: string) => CartItem | undefined;
+  cart:                     CartItem[];
+  addToCart:                (item: Omit<CartItem, "quantity">) => void;
+  removeFromCart:           (id: string) => void;
+  removeFromCartCompletely: (id: string) => void;
+  isInCart:                 (id: string) => CartItem | undefined;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -67,6 +68,11 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
   };
 
+  const removeFromCartCompletely = (id: string) => {
+    setCart((cartItem) => cartItem.filter(item => item.id !== id));
+    AsyncStorage.setItem("cart", JSON.stringify(cart));
+  };
+
   const getCartItem = async () => {
     const storedCart = await AsyncStorage.getItem("cart");
     if (storedCart) {
@@ -91,6 +97,7 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         addToCart,
         removeFromCart,
         isInCart,
+        removeFromCartCompletely,
       }}
     >
       {children}

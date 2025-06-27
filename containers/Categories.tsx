@@ -19,7 +19,6 @@ const Categories = () => {
 
 const styles = StyleSheet.create({
     categories: {
-        paddingHorizontal: 24,
         flexDirection: 'row',
         flexWrap: 'wrap',
         rowGap: 24,

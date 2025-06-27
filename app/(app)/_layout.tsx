@@ -1,4 +1,4 @@
-import { AntDesign, Entypo, Feather, FontAwesome6 } from '@expo/vector-icons';
+import { AntDesign, Entypo, Feather, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
@@ -25,23 +25,23 @@ export default function TabLayout() {
             }}
         />
         <Tabs.Screen
-            name="saved"
+            name="cart"
             options={{
-            title: 'Saved',
+            title: 'Cart',
                 tabBarIcon: ({ color }) => <Feather name="shopping-bag" size={24} color={color} />,
             }}
         />
         <Tabs.Screen
-            name="booking"
+            name="order"
             options={{
-            title: 'Booking',
+            title: 'Order',
                 tabBarIcon: ({ color }) => <AntDesign name="shoppingcart" size={24} color={color} />,
             }}
         />
         <Tabs.Screen
-            name="account"
+            name="profile"
             options={{
-            title: 'Account',
+            title: 'Profile',
                 tabBarIcon: ({ color }) => <FontAwesome6 name="circle-user" size={24} color={color} />,
             }}
         />
