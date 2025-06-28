@@ -69,7 +69,7 @@ const EditShippingAddress = ({ isOpen, closeModal, selectedAddress, chooseAddres
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#f3f3f3",
     },
     view: {
         flex: 1,

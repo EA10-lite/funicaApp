@@ -1,18 +1,6 @@
-import { use, createContext, type PropsWithChildren, useState, useEffect } from 'react';
+import { use, createContext, type PropsWithChildren, useState } from 'react';
 import { useStorageState } from '@/hooks/useStorageState';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-interface UserDTO {
-    email:      string;
-    name:       string;
-    phone:      string;
-    address:    Address[];
-}
-
-interface Address {
-    type:       string;
-    address:    string;
-}
+import { UserDTO } from '@/dto/user.dto';
 
 const AuthContext = createContext<{
     signIn: () => void;
@@ -48,8 +36,11 @@ export function SessionProvider({ children }: PropsWithChildren) {
 
     const handleLogin = () => {
         setIsLoggedIn(true);
-        const temp_user = {
-            name: "Emmanuel Anyigor",
+        setUser({
+            firstName: "Emmanuel",
+            lastName: "Anyigor",
+            country: "Nigeria",
+            gender: "Male",
             email: "emanuelanyigor@gmail.com",
             phone: "+234 7061 326 122",
             address: [
@@ -70,8 +61,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
                     address: "Unilag Road Akoka Yaba",
                 }
             ]
-        }
-        setUser(temp_user);
+        });
     }
 
     return (

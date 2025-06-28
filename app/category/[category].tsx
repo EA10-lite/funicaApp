@@ -27,7 +27,7 @@ const ProductDetails = () => {
     }, [category]);
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <View style={styles.head}>
                 { category && <GoBack label={category?.toString()} /> }
             </View>
@@ -39,10 +39,12 @@ const ProductDetails = () => {
                         subtitle="We couldn't find any products in this category."
                     />
                 ): (
-                    <Products products={data} />
+                    <ScrollView style={styles.product} showsVerticalScrollIndicator={false}>
+                        <Products products={data} />
+                    </ScrollView>
                 )}
             </View>
-        </ScrollView>
+        </View>
     )
 }
 
@@ -54,11 +56,14 @@ const styles = StyleSheet.create({
     head: {
         marginBottom: 24,
         position: "relative",
-        height: 100,
+        height: 80,
     },
     body: {
         paddingHorizontal: 24,
         flexGrow: 1,
+    },
+    view: {
+        flex: 1,
     },
     product: {},
 });
