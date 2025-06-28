@@ -5,14 +5,15 @@ import { useNavigation } from "expo-router";
 
 type goBackProps = {
     label?:  string;
+    handlePress?: () => void;
 }
 
-const GoBack = ({ label } : goBackProps) => {
+const GoBack = ({ label, handlePress} : goBackProps) => {
     const navigation = useNavigation();
 
     return (
         <View style={styles.row}>
-            <Pressable onPress={()=> navigation.goBack()}>
+            <Pressable onPress={()=> handlePress ? handlePress() : navigation.goBack()}>
                 <AntDesign name="arrowleft" size={24} color="black"  />
             </Pressable>
             { label && <Text style={styles.label}>{ label }</Text>}

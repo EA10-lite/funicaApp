@@ -15,10 +15,13 @@ const MiniProductCart = ({
         <Image source={{ uri: imageUri }} style={styles.image} />
       </View>
       <View style={styles.details}>
-        <View style={[styles.row, { marginBottom: 10, gap: 16 }]}>
+        <View style={[styles.row, { marginBottom: 6, gap: 16 }]}>
           <View style={{ maxWidth: '80%' }}>
             <Text style={[styles.title]}>{title}</Text>
           </View>
+        </View>
+        <View style={styles.quantityBox}>
+          <Text>{quantity} item{quantity > 1 ? "s" : ""}</Text>
         </View>
         <Text style={styles.price}>${price}</Text>
       </View>
@@ -71,6 +74,9 @@ const styles = StyleSheet.create({
     color: "#333",
     fontWeight: '600',
     marginBottom: 2,
+  },
+  quantityBox: {
+    marginBottom: 6,
   },
 });
 

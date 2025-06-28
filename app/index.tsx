@@ -12,7 +12,7 @@ const Splash = () => {
     useEffect(() => {
         const bootstrap = async () => {
             await new Promise(resolve => setTimeout(resolve, 3000));
-            const isOnboarded = await AsyncStorage.getItem("isOnboarded");
+            const isOnboarded = await AsyncStorage.getItem("isLoggedIn");
             if (isOnboarded === "true") {
                 if(!isLoading) {
                     if(session) router.replace("/(app)");

@@ -81,10 +81,6 @@ const ProductDetails = () => {
                                 ))}
                             </View>
                         </View>
-
-                        <View style={styles.field}>
-                            <Text style={styles.subtitle}>Quantity</Text>
-                        </View>
                     </View>
 
                     <View style={styles.detailsFooter}>

@@ -59,7 +59,7 @@ const Cart = () => {
             <View style={{ flexGrow: 1,}}>
               <Button 
                 label="Checkout"
-                href="/checkout/checkout"
+                href="/checkout"
                 variant="dark"
               />
             </View>

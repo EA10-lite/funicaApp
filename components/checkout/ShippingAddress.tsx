@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { router } from "expo-router";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { EditShippingAddress } from "../modals";
+import { AddressDTO } from "@/dto/checkout.dto";
 
 
 type ShippingAddressProps = {
-    isEditable:     boolean;
-    handleClick?:   ()=> void;
-    title:          string;
-    subtitle:       string;
-    isSelected?:    boolean;
+    address:             AddressDTO,
+    isEditable:         boolean;
+    handleClick:        ()=> void;
+    isSelected?:        boolean;
 }
 
-const ShippingAddress = ({ isEditable=false, title, subtitle, handleClick, isSelected} : ShippingAddressProps) => {
+const ShippingAddress = ({ 
+    address,
+    isEditable=false, 
+    handleClick, 
+    isSelected,
+} : ShippingAddressProps) => {
+
     return (
         <View style={[styles.addressContainer, styles.row]}>
             <View style={[styles.row, styles.address]}>
@@ -23,14 +30,14 @@ const ShippingAddress = ({ isEditable=false, title, subtitle, handleClick, isSel
                 </View>
 
                 <View style={{ marginLeft: 8 }}>
-                    <Text style={styles.title}>{title}</Text>
-                    <Text style={styles.subtitle}>{subtitle}</Text>
+                    <Text style={styles.title}>{address.type}</Text>
+                    <Text style={styles.subtitle}>{address.address}</Text>
                 </View>
             </View>
 
             <View style={styles.checkbox}>    
                 { isEditable ? (
-                    <Pressable onPress={()=> router.push("/checkout/edit-shipping-address")}>
+                    <Pressable onPress={handleClick}>
                         <AntDesign name="edit" size={20} color="black" />
                     </Pressable> 
                 ) : (
@@ -41,7 +48,6 @@ const ShippingAddress = ({ isEditable=false, title, subtitle, handleClick, isSel
                     </Pressable>
                 )}
             </View>
-
         </View>
     )
 }

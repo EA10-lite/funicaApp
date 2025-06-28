@@ -1,23 +1,19 @@
-import { FontAwesome5, FontAwesome6, MaterialIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { ShippingOptionDTO } from "@/dto/checkout.dto";
+import { FontAwesome6, MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 
 
 type ShippingOptionProps = {
+    option:         ShippingOptionDTO
     isEditable:     boolean;
-    title:          string;
-    subtitle?:      string;
-    price?:         number;
     handleClick?:   ()=> void;
     isSelected?:    boolean;
     iconName?:      string
 }
 
 const ShippingOptions = ({ 
-    isEditable, 
-    title, 
-    subtitle, 
-    price, 
+    option,
+    isEditable,
     handleClick, 
     isSelected, 
     iconName="truck"
@@ -26,22 +22,22 @@ const ShippingOptions = ({
         <View style={[styles.addressContainer, styles.row, { paddingVertical: 18}]}>
             <View style={styles.row}>
                 <View style={styles.innerIconBox}>
-                    <FontAwesome6 name={iconName} size={16} color="#fff" />
+                    <FontAwesome6 name={option.iconName ? option.iconName : iconName} size={16} color="#fff" />
                 </View>
 
                 <View style={{ marginLeft: 8 }}>
-                    <Text style={styles.title}>{title}</Text>
-                    {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+                    <Text style={styles.title}>{option.type}</Text>
+                    {option.date && <Text style={styles.subtitle}>{option.date}</Text>}
                 </View>
             </View>
 
             { isEditable ? (
-                <Pressable onPress={()=> router.push("/checkout/edit-shipping-options")}>
+                <Pressable onPress={handleClick}>
                     <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
                 </Pressable>
             ) : (
                 <View style={[styles.row, { gap: 12 }]}>
-                    <Text style={styles.title}>${price}</Text>
+                    <Text style={styles.title}>${option.fee}</Text>
                     <Pressable onPress={handleClick}>
                         <View style={[styles.outerCheckBox, styles.row]}>
                             {isSelected && <View style={styles.innerCheckBox} />}
