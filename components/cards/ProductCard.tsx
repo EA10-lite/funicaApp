@@ -4,16 +4,7 @@ import { Link } from "expo-router";
 import { View, StyleSheet, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Favorites } from "../main";
-
-type ProductCardProps = {
-    id:         string;
-    price:      number;
-    title:      string;
-    rating:     number;
-    imageUri:   string;
-    unitsLeft:  number;
-    category?:  string;
-}
+import { ProductDTO } from "@/dto/product.dto";
 
 const ProductCard = ({
     id,
@@ -22,7 +13,7 @@ const ProductCard = ({
     rating,
     imageUri,
     unitsLeft,
-} : ProductCardProps) => {
+} : ProductDTO) => {
     return (
         <Link 
             href={`/details/${id}`}

@@ -1,16 +1,7 @@
-import { useState } from "react";
 import { Text, View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import { Button, Logo, NoResult, PageHeader } from "@/components/main";
+import { Button, NoResult, PageHeader } from "@/components/main";
 import { CartCard } from "@/components/cards";
 import { useCartContext } from "@/context/CartContext";
-
-type ProductCardProps = {
-    id:         string;
-    price:      string;
-    title:      string;
-    rating:     number;
-    imageUri:   string;
-}
 
 const Cart = () => {
   const { cart } = useCartContext();

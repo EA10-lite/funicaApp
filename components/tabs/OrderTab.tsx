@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '600',
         color: '#9e9e9e',
+        textTransform: "capitalize",
     },
 });
 

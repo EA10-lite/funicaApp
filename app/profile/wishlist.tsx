@@ -18,8 +18,6 @@ type Product = {
 
 const ProductDetails = () => {
     const { favorites } = useFavoriteContext();
-    console.log("favorites: ", favorites);
-
     const [data, setData] = useState<Product[]>([]);
 
     useEffect(() => {

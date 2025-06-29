@@ -1,23 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView, StyleSheet, View, Text, } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text, ScrollView, } from "react-native";
 import { NoResult, SearchInput } from "@/components/main";
 import { Products } from "@/containers";
 import products from "@/data/products";
+import { ProductDTO } from "@/dto/product.dto";
 
 const DEBOUNCE_DELAY = 300;
-
-type Product = {
-    id:         string;
-    title:      string;
-    price:      string;
-    rating:     number;
-    imageUri:   string;
-}
 
 const Search = () => {
     const [search, setSearch] = useState<string>("");
     const [isLoading, setIsLoading] = useState(false);
-    const [results, setResults] = useState<Product[]>([]);
+    const [results, setResults] = useState<ProductDTO[]>([]);
     const debounceRef = useRef<number | null>(null);
 
     useEffect(() => {
@@ -29,7 +22,7 @@ const Search = () => {
         if (debounceRef.current) clearTimeout(debounceRef.current);
         debounceRef.current = setTimeout(async () => {
             try {
-                const response = products.filter(product => product.title.includes(search));
+                const response = products.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
                 setResults(response);
             } catch (e) {
                 setResults([]);
@@ -43,7 +36,7 @@ const Search = () => {
     }, [search]);
 
     return (
-        <SafeAreaView style={styles.page}>
+        <View style={styles.page}>
             <View style={styles.container}>
                 <View style={styles.search}>
                     <SearchInput 
@@ -70,14 +63,40 @@ const Search = () => {
                                 subtitle="Sorry we couldn't find any product related to the search keyword. Please check again or try another search."
                             />
                         ) : (
-                            <Products 
-                                products={results}
-                            />
+                            <ScrollView showsVerticalScrollIndicator={false}>
+                                <Products 
+                                    products={results}
+                                />
+                            </ScrollView>
                         )}
                     </View>
                 )}
+
+                { search.length <= 0 && (
+                    <ScrollView>
+                        {["Chair", "Table"].map((item, index)=> (
+                            <RecentSearch 
+                                search={item}
+                                key={index}
+                                handleClear={()=> null}
+                            />
+                        ))}
+                    </ScrollView>
+                )}
             </View>
-        </SafeAreaView>
+        </View>
+    )
+}
+
+type RecentSearchProps = {
+    search:     string;
+    handleClear: ()=> void;
+}
+
+
+const RecentSearch = ({ search, handleClear } : RecentSearchProps) => {
+    return (
+        <View></View>
     )
 }
 
@@ -93,6 +112,7 @@ const styles = StyleSheet.create({
     search: {
         marginBottom: 16,
         paddingHorizontal: 24,
+        marginTop: 40,
     },
     label: {
         fontSize: 18,
@@ -105,6 +125,7 @@ const styles = StyleSheet.create({
     result: {
         flexGrow: 1,
         marginTop: 24,
+        paddingHorizontal: 24,
     },
     resultCount: {
         display: 'flex',

@@ -1,10 +1,13 @@
 import { PageHeader } from "@/components/main";
+import { useSession } from "@/context/AuthContext";
 import { Entypo, Feather, Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import { Text, View, StyleSheet, ScrollView, Pressable, SafeAreaView} from "react-native";
 
 const Profile = () => {
+  const { user } = useSession();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -28,8 +31,8 @@ const Profile = () => {
             </View>
 
             <View className="">
-              <Text style={styles.title}>Chris Sutton</Text>
-              <Text style={styles.subtitle}>+234 7061 326 122 </Text>
+              <Text style={styles.title}>{user?.lastName} {user?.firstName}</Text>
+              <Text style={styles.subtitle}>{user?.phone}</Text>
             </View>
           </View>
           <View style={styles.body}>

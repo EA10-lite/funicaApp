@@ -11,8 +11,9 @@ type fieldProps = {
     name:           string;
     label?:         string;
     placeholder?:   string;
-    type:           KeyboardTypeOptions | undefined;
+    type?:           KeyboardTypeOptions | undefined;
     disabled?:      boolean;
+    isActive?:      boolean;
     Icon?:          React.ElementType;
     isSecureText?:  boolean;
 }
@@ -22,7 +23,8 @@ const Field = ({
     name,
     label,
     placeholder,
-    type,
+    isActive,
+    type="default",
     Icon,
     isSecureText = false,
 } : fieldProps) => {
@@ -38,6 +40,7 @@ const Field = ({
                 value={values[name]}
                 Icon={Icon}
                 visible={!!touched?.[name]}
+                isActive={isActive}
                 error={errors?.[name] as string | undefined}
                 handleChange={handleChange}
                 isSecureText={isSecureText}

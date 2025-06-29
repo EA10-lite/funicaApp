@@ -10,6 +10,7 @@ type inputProps =  {
     handleChange:       (text: string) => void;
     error?:             string | null;
     visible:            boolean;
+    isActive?:          boolean;
     disabled?:          boolean;
     value:              string;
     Icon?:              React.ElementType;
@@ -24,6 +25,7 @@ const Input = ({
     placeholder,
     type,
     visible,
+    isActive,
     error,
     value,
     disabled = false,
@@ -49,7 +51,7 @@ const Input = ({
                 style={[
                     styles.input, 
                     (error && visible) && styles.errorInput,
-                    isFocused && styles.activeInput,
+                    (isFocused || isActive) && styles.activeInput,
                 ]}
                 secureTextEntry={isSecureText}
                 value={values[name]}
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         paddingHorizontal: 18,
         paddingVertical: 16,
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '500',
         color: '#000',
         backgroundColor: '#fafafa',

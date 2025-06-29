@@ -1,20 +1,11 @@
-import { ProductCard } from "@/components/cards";
 import React from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { ProductCard } from "@/components/cards";
+import { ProductDTO } from "@/dto/product.dto";
+import { View, StyleSheet } from "react-native";
 
 
 type ProductsProps = {
-    products: Product[];
-}
-
-type Product = {
-    id:         string;
-    title:      string;
-    price:      number;
-    rating:     number;
-    imageUri:   string;
-    unitsLeft:  number;
-    category:   string;
+    products: ProductDTO[];
 }
 
 const Products = ({ products } : ProductsProps) => {
