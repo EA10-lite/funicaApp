@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         rowGap: 24,
-        marginBottom: 100,
+        paddingBottom: 120,
     }
 });
 

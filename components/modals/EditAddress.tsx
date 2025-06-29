@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { View, StyleSheet, Text, Modal } from "react-native";
+import { View, StyleSheet, Text, Modal, KeyboardAvoidingView, Platform } from "react-native";
 import { Formik } from "formik";
 import { Field, Submit } from "../forms";
 import { AddressDTO } from "@/dto/checkout.dto";
@@ -13,51 +13,54 @@ type EditAddressProps = PropsWithChildren<{
     selectedAddress?:   AddressDTO | null;
 }>;
 
-const Address = ({ closeModal, children, isOpen, title, selectedAddress } : EditAddressProps) => {
-    console.log("selected address: ", selectedAddress);
-
+const Address = ({ closeModal, isOpen, title, selectedAddress } : EditAddressProps) => {
     return (
         <Modal animationType="slide" transparent={true} visible={isOpen}>
             <View style={styles.modalContainer}>
-                <View style={styles.modalContent}>
-                    <View style={styles.modalHeader}>
-                        <Text style={styles.title}>{title}</Text>
-                        <AntDesign name="close" size={24} color="black" onPress={closeModal} />
-                    </View>
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                    style={{ flex: 1, justifyContent: 'flex-end' }}
+                >
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.title}>{title}</Text>
+                            <AntDesign name="close" size={24} color="black" onPress={closeModal} />
+                        </View>
 
-                    <View style={styles.modalBody}>
-                        <Formik
-                            initialValues={{ 
-                                type: selectedAddress?.type || "", 
-                                address: selectedAddress?.address || ""
-                            }}
-                            onSubmit={(values)=> console.log(values)}
-                        >
-                            {()=> (
-                                <View>
-                                    <Field 
-                                        name="type"
-                                        type="default"
-                                        label="Address Name"
-                                    />
-                                    <Field 
-                                        name="address"
-                                        type="default"
-                                        label="Address Details"
-                                    />
-
-                                    <View style={styles.modalFooter}>
-                                        <Submit 
-                                            label="Add"
-                                            loading={false}
+                        <View style={styles.modalBody}>
+                            <Formik
+                                initialValues={{ 
+                                    type: selectedAddress?.type || "", 
+                                    address: selectedAddress?.address || ""
+                                }}
+                                onSubmit={(values)=> console.log(values)}
+                            >
+                                {()=> (
+                                    <View>
+                                        <Field 
+                                            name="type"
+                                            type="default"
+                                            label="Address Name"
                                         />
-                                    </View>
-                                </View>
-                            )}
-                        </Formik>
-                    </View>
+                                        <Field 
+                                            name="address"
+                                            type="default"
+                                            label="Address Details"
+                                        />
 
-                </View>
+                                        <View style={styles.modalFooter}>
+                                            <Submit 
+                                                label="Add"
+                                                loading={false}
+                                            />
+                                        </View>
+                                    </View>
+                                )}
+                            </Formik>
+                        </View>
+
+                    </View>
+                </KeyboardAvoidingView>
             </View>
         </Modal>
     )

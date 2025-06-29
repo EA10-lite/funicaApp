@@ -34,7 +34,7 @@ const Onboarding = () => {
             setStep(prevStep => prevStep + 1);
         }
         else {
-            AsyncStorage.setItem('isOnboarded', 'true');
+            AsyncStorage.setItem('isLoggedIn', 'true');
             router.replace("/auth");
         }
     }
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     image: {
         height: "100%",
-        objectFit: "cover",
+        resizeMode: "cover",
         width: "100%",
     },
     text: {

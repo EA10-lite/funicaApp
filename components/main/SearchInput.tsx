@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { View, TextInput, StyleSheet} from "react-native";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { View, TextInput, StyleSheet, Pressable} from "react-native";
+import { Filter } from "../modals";
 import Loading from "./Loading";
 
 type SearchInputProps = {
@@ -20,31 +21,43 @@ const SearchInput = ({
     isLoading,
     hasFilter,
 } : SearchInputProps) => {
+    const [openFilter, setOpenFilter] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-        <View style={[
-            styles.search,
-            isFocused && styles.activeInput,
-        ]}>
-            <Ionicons name="search-outline" size={20} color={isFocused ? "#000" : "#b9bdbe"} />
-            <TextInput 
-                placeholder={placeholder}
-                placeholderTextColor="#5555"
-                value={value}
-                keyboardType="default"
-                onChangeText={(text)=> handleChange(text)}
-                onFocus={()=> setIsFocused(true)}
-                onBlur={()=> setIsFocused(false)}
-                style={[
-                    styles.input
-                ]}
-            />
+        <>
+            <View style={[
+                styles.search,
+                isFocused && styles.activeInput,
+            ]}>
+                <Ionicons name="search-outline" size={20} color={isFocused ? "#000" : "#b9bdbe"} />
+                <TextInput 
+                    placeholder={placeholder}
+                    placeholderTextColor="#5555"
+                    value={value}
+                    keyboardType="default"
+                    onChangeText={(text)=> handleChange(text)}
+                    onFocus={()=> setIsFocused(true)}
+                    onBlur={()=> setIsFocused(false)}
+                    style={[
+                        styles.input
+                    ]}
+                />
 
-            {isLoading && (
-                <Loading size={16} color="#000" />
-            )}
-        </View>
+                {isLoading ? (
+                    <Loading size={16} color="#000" />
+                ) : hasFilter && (
+                    <Pressable onPress={()=> setOpenFilter(true)}>
+                        <MaterialCommunityIcons name="tune-variant" size={20} color="black" />
+                    </Pressable>
+                )}
+            </View>
+
+            <Filter 
+                isOpen={openFilter}
+                closeModal={()=> setOpenFilter(false)}
+            />
+        </>
     )
 }
 

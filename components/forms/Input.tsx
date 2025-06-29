@@ -53,7 +53,7 @@ const Input = ({
                     (error && visible) && styles.errorInput,
                     (isFocused || isActive) && styles.activeInput,
                 ]}
-                secureTextEntry={isSecureText}
+                secureTextEntry={isPasswordVisible ? false : isSecureText}
                 value={values[name]}
                 {...otherProps}
             />

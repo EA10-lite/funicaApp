@@ -1,12 +1,15 @@
-import { PageHeader } from "@/components/main";
-import { useSession } from "@/context/AuthContext";
-import { Entypo, Feather, Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import React, { useState } from "react";
+import { Text, View, StyleSheet, ScrollView, Pressable, SafeAreaView} from "react-native";
 import { Image } from "expo-image";
 import { router } from "expo-router";
-import { Text, View, StyleSheet, ScrollView, Pressable, SafeAreaView} from "react-native";
+import { Entypo, Feather, MaterialIcons } from "@expo/vector-icons";
+import { PageHeader } from "@/components/main";
+import { Logout } from "@/components/modals";
+import { useSession } from "@/context/AuthContext";
 
 const Profile = () => {
   const { user } = useSession();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -76,7 +79,7 @@ const Profile = () => {
                 <Field 
                   title="Help Center" 
                   icon="info" 
-                  handlePress={()=> router.push("/profile/wishlist")} 
+                  handlePress={()=> router.push("/profile/help-center")} 
                 />
                 <Field 
                   title="Privacy Policy" 
@@ -90,12 +93,22 @@ const Profile = () => {
                 />
               </View>
               <View>
-                <Field title="Logout" icon="log-out"  />
+                <Field 
+                  title="Logout" 
+                  icon="log-out" 
+                  isLogout={true} 
+                  handlePress={()=> setIsOpen(true)}
+                />
               </View>
             </View>
           </View>
         </ScrollView>
       </View>
+
+      <Logout 
+        isOpen={isOpen}
+        closeModal={()=> setIsOpen(false)}
+      />
     </SafeAreaView>
   );
 }
@@ -106,17 +119,18 @@ type FieldProps = {
   title:        string;
   handlePress?: ()=> void;
   icon:         FeatherIcon;
+  isLogout?:    boolean
 }
 
-const Field = ({ title, handlePress, icon}: FieldProps) => {
+const Field = ({ title, handlePress, icon, isLogout}: FieldProps) => {
   return (
     <Pressable onPress={handlePress}>
       <View style={styles.field}>
         <View style={{ flexDirection: "row", gap: 20, alignItems: "center" }}>
-          <Feather name={icon} size={20} color="black" />
-          <Text style={styles.fieldTtile}>{ title }</Text>
+          <Feather name={icon} size={20} color={isLogout ? "#fa0000" : "black" } />
+          <Text style={[styles.fieldTtile, { color: isLogout ? "#fa0000" : "#000"}]}>{ title }</Text>
         </View>
-        <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
+        {!isLogout && <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />}
       </View>
     </Pressable>
   )
@@ -131,6 +145,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   view: { 
+    flex: 1,
     paddingHorizontal: 24,
     paddingVertical: 44,
   },
@@ -168,7 +183,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '400'
   },
-  body: {},
+  body: {
+    paddingBottom: 64,
+  },
   fields: {
     marginBottom: 24,
   },

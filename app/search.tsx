@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView, StyleSheet, View, Text, ScrollView, } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text, ScrollView, Pressable, } from "react-native";
 import { NoResult, SearchInput } from "@/components/main";
 import { Products } from "@/containers";
 import products from "@/data/products";
 import { ProductDTO } from "@/dto/product.dto";
+import { AntDesign } from "@expo/vector-icons";
 
 const DEBOUNCE_DELAY = 300;
 
@@ -73,15 +74,29 @@ const Search = () => {
                 )}
 
                 { search.length <= 0 && (
-                    <ScrollView>
-                        {["Chair", "Table"].map((item, index)=> (
-                            <RecentSearch 
-                                search={item}
-                                key={index}
-                                handleClear={()=> null}
-                            />
-                        ))}
-                    </ScrollView>
+                    <View style={{ paddingHorizontal: 24, flex: 1 }}>
+                        <View style={[styles.resultCount, styles.recentSearchHeader]}>
+                            <Text style={styles.label}>Recent search</Text>
+                            <Pressable>
+                                <Text style={styles.count}>Clear All</Text>
+                            </Pressable>
+                        </View>
+                        <ScrollView style={{ flex: 1}} showsVerticalScrollIndicator={false}>
+                            {[
+                                "Chair", 
+                                "Table",
+                                "Foam Padded Chair",
+                                "Mabel Flower Vase",
+                                "Glass Package"
+                            ].map((item, index)=> (
+                                <RecentSearch 
+                                    search={item}
+                                    key={index}
+                                    handleClear={()=> null}
+                                />
+                            ))}
+                        </ScrollView>
+                    </View>
                 )}
             </View>
         </View>
@@ -96,7 +111,14 @@ type RecentSearchProps = {
 
 const RecentSearch = ({ search, handleClear } : RecentSearchProps) => {
     return (
-        <View></View>
+        <Pressable>
+            <View style={styles.row}>
+                <Text style={styles.recentSearch}>{search}</Text>
+                <View style={styles.iconBox}>
+                    <AntDesign name="close" size={14} color={"#757575"}/>
+                </View>
+            </View>
+        </Pressable>
     )
 }
 
@@ -128,11 +150,32 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
     },
     resultCount: {
-        display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 24,
+    },
+    row: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: 16,
+    },
+    recentSearchHeader: {
+        paddingBottom: 16, 
+        borderBottomColor: "#757575",
+        borderBottomWidth: 1,
+        marginBottom: 16,
+        paddingHorizontal: 0,
+    },
+    recentSearch: {
+        color: "#757575",
+        fontSize: 16,
+    },
+    iconBox: {
+        borderColor: "#757575",
+        borderWidth: 1,
+        borderRadius: 8,
+        padding: 4,
     },
 });
 

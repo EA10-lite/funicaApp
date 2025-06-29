@@ -7,7 +7,7 @@ type OrderTabProps = {
     setActiveTab:   (tab: string) => void;
 }
 
-const OrderTab = ({ activeTab, setActiveTab, tabs} : OrderTabProps) => {
+const PageTab = ({ activeTab, setActiveTab, tabs} : OrderTabProps) => {
     return (
         <View style={styles.tabContainer}>
             {tabs.map((tab, index)=> (    
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default OrderTab;
+export default PageTab;

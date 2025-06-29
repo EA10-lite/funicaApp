@@ -5,3 +5,4 @@ export { default as EditShippingOptions } from "./EditShippingOptions";
 export { default as EditAddress } from "./EditAddress";
 export { default as TrackOrder } from "./TrackOrder";
 export { default as Review } from "./Review";
+export { default as Logout } from "./Logout";

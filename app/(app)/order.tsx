@@ -2,10 +2,10 @@ import { useState } from "react";
 import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import { NoResult, PageHeader } from "@/components/main";
 import { OrderCard } from "@/components/cards";
-import { OrderTab } from "@/components/tabs";
+import { PageTab } from "@/components/tabs";
 import { OrderDTO } from "@/dto/product.dto";
-import data from "@/data/orders";
 import { Review, TrackOrder } from "@/components/modals";
+import data from "@/data/orders";
 
 const Order = () => {
   const [activeTab, setActiveTab] = useState<string>("active");
@@ -28,7 +28,7 @@ const Order = () => {
       <View style={styles.orderContainer}>
         <PageHeader pageTitle="My Order" />
         <View style={styles.tab}>
-          <OrderTab 
+          <PageTab 
             tabs={["active", "completed"]}
             activeTab={activeTab}
             setActiveTab={(tab)=> setActiveTab(tab)}
@@ -44,22 +44,24 @@ const Order = () => {
           </View>
         ) : (
           <ScrollView style={styles.orderItems} showsVerticalScrollIndicator={false}>
-            { activeTab === "completed" ? 
-              data.filter(order => order.status === "completed").map(item => (
+            <View style={{ paddingBottom: 64 }}>
+              { activeTab === "completed" ? 
+                data.filter(order => order.status === "completed").map(item => (
+                  <OrderCard 
+                    key={item.id}
+                    handleClick={()=> handleClick(item, "completed")}
+                    btnType="Leave Review"
+                    {...item}
+                  />
+                )) : data.filter(order => order.status !== "completed" ).map((item) => (
                 <OrderCard 
                   key={item.id}
-                  handleClick={()=> handleClick(item, "completed")}
-                  btnType="Leave Review"
                   {...item}
+                  handleClick={()=> handleClick(item, "active")}
+                  btnType="Track order"
                 />
-              )) : data.filter(order => order.status !== "completed" ).map((item) => (
-              <OrderCard 
-                key={item.id}
-                {...item}
-                handleClick={()=> handleClick(item, "active")}
-                btnType="Track order"
-              />
-            ))}
+              ))}
+            </View>
           </ScrollView>
         )}
 
