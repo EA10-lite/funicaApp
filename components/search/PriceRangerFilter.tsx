@@ -17,29 +17,6 @@ const PriceRangeFilter = () => {
 
             {/* Optional: Add histogram-style bars here */}
 
-            <View style={{ 
-                flexDirection: 'row', 
-                alignItems: 'flex-end', 
-                justifyContent: "space-between", 
-                height: 80, 
-                marginTop: 16, 
-                marginBottom: -16,
-                overflow: "hidden"
-            }}>
-                {[...Array(100)].map((_, i) => (
-                    <View
-                        key={i}
-                        style={{
-                            width: 4,
-                            height: Math.random() * 80,
-                            backgroundColor: '#e2e2e2',
-                            marginHorizontal: 1,
-                            borderRadius: 2,
-                        }}
-                    />
-                ))}
-            </View>
-
             <MultiSlider
                 values={values}
                 onValuesChange={onValuesChange}

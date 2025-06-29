@@ -68,7 +68,7 @@ const Checkout = () => {
                 <View style={styles.head}>
                     <GoBack label="Checkout" />
                 </View>
-                <ScrollView style={styles.view}>
+                <ScrollView style={styles.view} showsVerticalScrollIndicator={false}>
                     <View style={styles.body}>
                         <View style={styles.field}>
                             <Text style={styles.fieldTitle}>Shipping Address</Text>

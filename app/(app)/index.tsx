@@ -1,18 +1,21 @@
-import { Header } from "@/components/main";
-import { StyleSheet, SafeAreaView, ScrollView} from "react-native";
+import { Header, SearchPlaceholder } from "@/components/main";
+import { StyleSheet, SafeAreaView, View} from "react-native";
 import { Categories, Products, SpecialOffers, Filters } from "@/containers";
 import products from "@/data/products";
+import { CustomScrollView } from "@/layout";
 
 const Index = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{paddingHorizontal: 24 }}>
-        <Header />
-        <SpecialOffers />
-        <Categories />
-        <Filters />
-        <Products products={products}/>
-      </ScrollView>
+      <Header />
+      <CustomScrollView>
+        <View style={{ paddingHorizontal: 24, paddingVertical: 24}}>
+          <SearchPlaceholder />
+          <SpecialOffers />
+          <Categories />
+          <Products products={products}/>
+        </View>
+      </CustomScrollView>
     </SafeAreaView>
   );
 }

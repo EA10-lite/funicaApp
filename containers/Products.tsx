@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         rowGap: 24,
-        paddingBottom: 120,
     }
 });
 

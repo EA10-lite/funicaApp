@@ -6,23 +6,15 @@ import products from "@/data/products";
 import { Image } from "expo-image";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useCartContext } from "@/context/CartContext";
-
-type Product = {
-    id:         string;
-    title:      string;
-    price:      number;
-    imageUri:   string;
-    rating:     number;
-    unitsLeft:  number;
-    category:   string;
-}
+import { ProductDTO } from "@/dto/product.dto";
+import { imageMap } from "@/dto/images";
 
 const colors = ["#7a5548", "#5f7d89", "#9d28ac", "#019689", "#673abd", "#3e5b12"]
 
 const ProductDetails = () => {
     const { id } = useLocalSearchParams();
     const { addToCart, isInCart, removeFromCart } = useCartContext();
-    const [product, setProduct] = useState<Product | undefined | null>(null);
+    const [product, setProduct] = useState<ProductDTO | undefined | null>(null);
     const [selectedColor, setSelectedColor] = useState<string | null>("#7a5548");
 
     useEffect(()=> {
@@ -35,10 +27,12 @@ const ProductDetails = () => {
             <GoBack />
             <ScrollView style={styles.container}>
                 <View style={styles.imgContainer}>
-                    <Image 
-                        style={styles.img}
-                        source={product?.imageUri}
-                    />
+                    {product?.imageUri && (
+                        <Image 
+                            style={styles.img}
+                            source={imageMap[product?.imageUri]}
+                        /> 
+                    )}
                 </View>
                 <View style={styles.details}>
                     <View style={styles.detailsHeader}>
@@ -82,36 +76,34 @@ const ProductDetails = () => {
                             </View>
                         </View>
                     </View>
-
-                    <View style={styles.detailsFooter}>
-                        <View>
-                            <Text style={styles.paragraph}>Total Price</Text>
-                            <Text style={styles.title}>${product?.price}</Text>
-                        </View>
-                        <View style={{ flexGrow: 1 }}>
-                            { product && (isInCart(product?.id) ? (
-                                <Button 
-                                    label="Remove from Cart"
-                                    variant="dark"
-                                    onPress={()=> removeFromCart(product?.id) }
-                                />
-                            ) : (
-                                <Button 
-                                    label="Add to Cart" 
-                                    variant="dark"
-                                    onPress={() => addToCart({
-                                        title: product?.title,
-                                        imageUri: product?.imageUri,
-                                        price: product?.price,
-                                        id: product?.id,
-                                    })} 
-                                />
-                            ))}
-                        </View>
-                    </View>
-
                 </View>
             </ScrollView>
+            <View style={styles.detailsFooter}>
+                <View>
+                    <Text style={styles.paragraph}>Total Price</Text>
+                    <Text style={styles.title}>${product?.price}</Text>
+                </View>
+                <View style={{ flexGrow: 1 }}>
+                    { product && (isInCart(product?.id) ? (
+                        <Button 
+                            label="Remove from Cart"
+                            variant="dark"
+                            onPress={()=> removeFromCart(product?.id) }
+                        />
+                    ) : (
+                        <Button 
+                            label="Add to Cart" 
+                            variant="dark"
+                            onPress={() => addToCart({
+                                title: product?.title,
+                                imageUri: product?.imageUri,
+                                price: product?.price,
+                                id: product?.id,
+                            })} 
+                        />
+                    ))}
+                </View>
+            </View>
         </View>
     )
 }
@@ -158,8 +150,7 @@ const styles = StyleSheet.create({
     detailsBody: {
         marginBottom: 16,
         paddingBottom: 16,
-        borderBottomWidth: 1,
-        borderBlockColor: '#f3f3f3',
+        flexGrow: 1,
     },
     field: {
         marginBottom: 16,
@@ -207,10 +198,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     detailsFooter: {
+        position: "absolute",
+        bottom: 0,
+        zIndex: 10,
+        backgroundColor: "#fff",
+        paddingVertical: 24,
+        paddingHorizontal: 24,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between",
         gap: 32,
+        borderTopWidth: 1,
+        borderTopColor: "#e2e2e2",
     },
 });
 

@@ -4,6 +4,7 @@ import { useLocalSearchParams } from "expo-router";
 import { GoBack, NoResult } from "@/components/main";
 import products from "@/data/products";
 import { Products } from "@/containers";
+import { CustomScrollView } from "@/layout";
 
 type Product = {
     id:         string;
@@ -39,9 +40,9 @@ const ProductDetails = () => {
                         subtitle="We couldn't find any products in this category."
                     />
                 ): (
-                    <ScrollView style={styles.product} showsVerticalScrollIndicator={false}>
+                    <CustomScrollView>
                         <Products products={data} />
-                    </ScrollView>
+                    </CustomScrollView>
                 )}
             </View>
         </View>
@@ -65,7 +66,6 @@ const styles = StyleSheet.create({
     view: {
         flex: 1,
     },
-    product: {},
 });
 
 export default ProductDetails;

@@ -16,7 +16,9 @@ const SearchPlaceholder = () => {
 }
 
 const styles = StyleSheet.create({
-    searchContainer: {},
+    searchContainer: {
+        marginBottom: 24,
+    },
     search: {
         borderRadius: 16,
         backgroundColor: '#f5f5f5',

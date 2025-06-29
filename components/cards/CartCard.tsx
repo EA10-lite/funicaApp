@@ -3,6 +3,7 @@ import { AntDesign, Feather } from "@expo/vector-icons";
 import { View, StyleSheet, Text, Image, Pressable } from "react-native";
 import { CartItem, useCartContext } from "@/context/CartContext";
 import { RemoveFromCart } from "../modals";
+import { imageMap } from "@/dto/images";
 
 const CartCard = ({
   id,
@@ -17,7 +18,7 @@ const CartCard = ({
   return (
     <View style={styles.card}>
       <View style={styles.imgContainer}>
-        <Image source={{ uri: imageUri }} style={styles.image} />
+        <Image source={imageMap[imageUri]} style={styles.image} />
       </View>
       <View style={styles.details}>
         <View style={[styles.row, { marginBottom: 10, gap: 16 }]}>
@@ -107,8 +108,8 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   image: {
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
     borderRadius: 8,
     resizeMode: "contain",
   },

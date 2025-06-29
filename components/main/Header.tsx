@@ -23,15 +23,15 @@ const Header = () => {
                     <Ionicons name="notifications-outline" size={24} color="black" />
                 </View>
             </View>
-
-            <SearchPlaceholder />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
-        marginBottom: 24,
+        paddingHorizontal: 24,
+        borderBottomColor: "#e2e2e2",
+        borderBottomWidth: 1,
     },
     row: {
         display: 'flex',

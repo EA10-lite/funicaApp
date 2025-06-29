@@ -1,6 +1,8 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { CartItem } from "@/context/CartContext";
+import { Image } from "expo-image";
+import { imageMap } from "@/dto/images";
 
 const MiniProductCart = ({
   id,
@@ -12,7 +14,7 @@ const MiniProductCart = ({
   return (
     <View style={styles.card}>
       <View style={styles.imgContainer}>
-        <Image source={{ uri: imageUri }} style={styles.image} />
+        <Image source={imageMap[imageUri]} style={styles.image} />
       </View>
       <View style={styles.details}>
         <View style={[styles.row, { marginBottom: 6, gap: 16 }]}>
@@ -51,9 +53,8 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   image: {
-    width: 60,
-    height: 60,
-    borderRadius: 8,
+    width: 100,
+    height: 100,
     resizeMode: "contain",
   },
   details: {

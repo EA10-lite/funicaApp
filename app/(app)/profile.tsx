@@ -12,12 +12,9 @@ const Profile = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <PageHeader pageTitle="My Profile" />
       <View style={styles.container}>
-        <View style={styles.pageHeader}>
-          <PageHeader pageTitle="My Profile" />
-        </View>
-
         <ScrollView 
           style={styles.view} 
           showsVerticalScrollIndicator={false}
@@ -109,7 +106,7 @@ const Profile = () => {
         isOpen={isOpen}
         closeModal={()=> setIsOpen(false)}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -194,7 +191,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 16,
-    paddingHorizontal: 12,
   },
   fieldTtile: {
     fontSize: 15,

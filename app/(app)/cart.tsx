@@ -1,7 +1,8 @@
-import { Text, View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { Button, NoResult, PageHeader } from "@/components/main";
 import { CartCard } from "@/components/cards";
 import { useCartContext } from "@/context/CartContext";
+import { CustomScrollView } from "@/layout";
 
 const Cart = () => {
   const { cart } = useCartContext();
@@ -14,12 +15,9 @@ const Cart = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <PageHeader pageTitle="My Cart" />
       <View style={styles.cartContainer}>
-        <View style={styles.header}>
-          <PageHeader pageTitle="My Cart" />
-        </View>
-
         <View style={styles.body}>
           { cart.length <= 0 ? (
             <View style={styles.emptyCart}>
@@ -29,14 +27,16 @@ const Cart = () => {
               />
             </View>
           ) : (
-            <ScrollView style={styles.cartItems}>
-              { cart.map((item) => (
-                <CartCard 
-                  key={item.id}
-                  {...item}
-                />
-              ))}
-            </ScrollView>
+            <CustomScrollView>
+              <View style={styles.cartItems}>
+                { cart.map((item) => (
+                  <CartCard 
+                    key={item.id}
+                    {...item}
+                  />
+                ))}
+              </View>
+            </CustomScrollView>
           )}
         </View>
 
@@ -57,7 +57,7 @@ const Cart = () => {
           </View>
         )}
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -69,16 +69,12 @@ const styles = StyleSheet.create({
   cartContainer: {
     flex: 1,
   },
-  header: {
-    paddingHorizontal: 24,
-  },
   title: {
     fontSize: 24,
     fontWeight: '700',
   },
   body: {
     flexGrow: 1,
-    paddingBottom: 200,
   },
   list: {},
   emptyCart: {
@@ -87,6 +83,8 @@ const styles = StyleSheet.create({
   },
   cartItems: {
     paddingHorizontal: 24,
+    paddingTop: 24,
+    paddingBottom: 64,
   },
   footer: {
     width: '100%',
@@ -95,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 20,
     position: 'absolute',
-    bottom: 48,
+    bottom: 82,
     zIndex: 60,
     paddingVertical: 16,
     paddingHorizontal: 24,

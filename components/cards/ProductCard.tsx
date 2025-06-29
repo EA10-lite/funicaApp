@@ -5,6 +5,7 @@ import { View, StyleSheet, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Favorites } from "../main";
 import { ProductDTO } from "@/dto/product.dto";
+import { imageMap } from "@/dto/images";
 
 const ProductCard = ({
     id,
@@ -22,7 +23,7 @@ const ProductCard = ({
             <View style={styles.card}>
                 <View style={styles.imgContainer}>
                     <Favorites id={id} />
-                    <Image source={imageUri} style={styles.img} />
+                    <Image source={imageMap[imageUri]} style={styles.img} />
                 </View>
                 <View style={styles.cardDetails}>
                     <Text style={styles.title}>{ title }</Text>

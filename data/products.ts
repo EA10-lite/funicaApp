@@ -5,7 +5,7 @@ export default [
     category: "Chair",
     rating: 4.7,
     unitsLeft: 10,
-    imageUri: require("@/assets/images/product-1.png"),
+    imageUri: "product-1.png",
     price: 120,
   },
   {
@@ -14,7 +14,7 @@ export default [
     category: "Vase",
     rating: 4.2,
     unitsLeft: 15,
-    imageUri: require("@/assets/images/vase-1.png"),
+    imageUri: "vase-1.png",
     price: 50,
   },
   {
@@ -23,7 +23,7 @@ export default [
     category: "Sofa",
     rating: 4.9,
     unitsLeft: 8,
-    imageUri: require("@/assets/images/sofa-1.png"),
+    imageUri: "sofa-1.png",
     price: 350,
   },
   {
@@ -32,7 +32,7 @@ export default [
     category: "Kitchen",
     rating: 3.8,
     unitsLeft: 20,
-    imageUri: require("@/assets/images/kitchen-3.png"),
+    imageUri: "kitchen-3.png",
     price: 15,
   },
   {
@@ -41,7 +41,7 @@ export default [
     category: "Lamp",
     rating: 4.3,
     unitsLeft: 12,
-    imageUri: require("@/assets/images/lamp-1.png"),
+    imageUri: "lamp-1.png",
     price: 80,
   },
   {
@@ -50,7 +50,7 @@ export default [
     category: "Table",
     rating: 4.6,
     unitsLeft: 9,
-    imageUri: require("@/assets/images/product-15.png"),
+    imageUri: "product-15.png",
     price: 250,
   },
   {
@@ -59,7 +59,7 @@ export default [
     category: "Kitchen",
     rating: 4.4,
     unitsLeft: 14,
-    imageUri: require("@/assets/images/kitchen-1.png"),
+    imageUri: "kitchen-1.png",
     price: 40,
   },
   {
@@ -68,7 +68,7 @@ export default [
     category: "Sofa",
     rating: 4.0,
     unitsLeft: 11,
-    imageUri: require("@/assets/images/sofa-2.png"),
+    imageUri: "sofa-2.png",
     price: 320,
   },
   {
@@ -77,7 +77,7 @@ export default [
     category: "Kitchenware",
     rating: 4.8,
     unitsLeft: 7,
-    imageUri: require("@/assets/images/product-2.png"),
+    imageUri: "product-2.png",
     price: 60,
   },
   {
@@ -86,7 +86,7 @@ export default [
     category: "Vase",
     rating: 4.1,
     unitsLeft: 16,
-    imageUri: require("@/assets/images/vase-3.png"),
+    imageUri: "vase-3.png",
     price: 55,
   },
   {
@@ -95,7 +95,7 @@ export default [
     category: "Furniture Set",
     rating: 4.5,
     unitsLeft: 6,
-    imageUri: require("@/assets/images/product-7.png"),
+    imageUri: "product-7.png",
     price: 400,
   },
   {
@@ -104,7 +104,7 @@ export default [
     category: "Kitchen",
     rating: 4.3,
     unitsLeft: 18,
-    imageUri: require("@/assets/images/kitchen-4.png"),
+    imageUri: "kitchen-4.png",
     price: 35,
   },
   {
@@ -113,7 +113,7 @@ export default [
     category: "Lamp",
     rating: 4.6,
     unitsLeft: 10,
-    imageUri: require("@/assets/images/lamp-4.png"),
+    imageUri: "lamp-4.png",
     price: 90,
   },
   {
@@ -122,7 +122,7 @@ export default [
     category: "Sofa",
     rating: 4.2,
     unitsLeft: 13,
-    imageUri: require("@/assets/images/sofa-3.png"),
+    imageUri: "sofa-3.png",
     price: 330,
   },
   {
@@ -131,7 +131,7 @@ export default [
     category: "Vase",
     rating: 4.0,
     unitsLeft: 17,
-    imageUri: require("@/assets/images/vase-2.png"),
+    imageUri: "vase-2.png",
     price: 45,
   },
   {
@@ -140,7 +140,7 @@ export default [
     category: "Kitchen",
     rating: 4.5,
     unitsLeft: 11,
-    imageUri: require("@/assets/images/kitchen-5.png"),
+    imageUri: "kitchen-5.png",
     price: 30,
   },
   {
@@ -149,7 +149,7 @@ export default [
     category: "Chair",
     rating: 4.4,
     unitsLeft: 12,
-    imageUri: require("@/assets/images/chair-3.png"),
+    imageUri: "chair-3.png",
     price: 150,
   },
   {
@@ -158,7 +158,7 @@ export default [
     category: "Lamp",
     rating: 3.9,
     unitsLeft: 15,
-    imageUri: require("@/assets/images/lamp-2.png"),
+    imageUri: "lamp-2.png",
     price: 85,
   },
   {
@@ -167,7 +167,7 @@ export default [
     category: "Sofa",
     rating: 4.7,
     unitsLeft: 7,
-    imageUri: require("@/assets/images/sofa-3.png"),
+    imageUri: "sofa-3.png",
     price: 360,
   },
   {
@@ -176,7 +176,7 @@ export default [
     category: "Kitchen",
     rating: 4.5,
     unitsLeft: 14,
-    imageUri: require("@/assets/images/kitchen-8.png"),
+    imageUri: "kitchen-8.png",
     price: 70,
   },
   {
@@ -185,7 +185,7 @@ export default [
     category: "Lamp",
     rating: 4.3,
     unitsLeft: 13,
-    imageUri: require("@/assets/images/lamp-6.png"),
+    imageUri: "lamp-6.png",
     price: 75,
   },
   {
@@ -194,7 +194,7 @@ export default [
     category: "Kitchen",
     rating: 4.4,
     unitsLeft: 16,
-    imageUri: require("@/assets/images/kitchen-2.png"),
+    imageUri: "kitchen-2.png",
     price: 38,
   },
   {
@@ -203,7 +203,7 @@ export default [
     category: "Chair",
     rating: 4.6,
     unitsLeft: 9,
-    imageUri: require("@/assets/images/chair-5.png"),
+    imageUri: "chair-5.png",
     price: 180,
   },
   {
@@ -212,7 +212,7 @@ export default [
     category: "Vase",
     rating: 4.2,
     unitsLeft: 15,
-    imageUri: require("@/assets/images/vase-4.png"),
+    imageUri: "vase-4.png",
     price: 50,
   },
   {
@@ -221,7 +221,7 @@ export default [
     category: "Lamp",
     rating: 4.5,
     unitsLeft: 11,
-    imageUri: require("@/assets/images/lamp-3.png"),
+    imageUri: "lamp-3.png",
     price: 95,
   },
   {
@@ -230,7 +230,7 @@ export default [
     category: "Chair",
     rating: 3.7,
     unitsLeft: 20,
-    imageUri: require("@/assets/images/chair-2.png"),
+    imageUri: "chair-2.png",
     price: 90,
   },
   {
@@ -239,7 +239,7 @@ export default [
     category: "Vase",
     rating: 4.3,
     unitsLeft: 14,
-    imageUri: require("@/assets/images/vase-5.png"),
+    imageUri: "vase-5.png",
     price: 50,
   },
   {
@@ -248,7 +248,7 @@ export default [
     category: "Kitchen",
     rating: 4.0,
     unitsLeft: 18,
-    imageUri: require("@/assets/images/kitchen-6.png"),
+    imageUri: "kitchen-6.png",
     price: 20,
   },
   {
@@ -257,7 +257,7 @@ export default [
     category: "Chair",
     rating: 4.5,
     unitsLeft: 10,
-    imageUri: require("@/assets/images/chair-1.png"),
+    imageUri: "chair-1.png",
     price: 130,
   },
   {
@@ -266,7 +266,7 @@ export default [
     category: "Vase",
     rating: 4.1,
     unitsLeft: 16,
-    imageUri: require("@/assets/images/vase-6.png"),
+    imageUri: "vase-6.png",
     price: 50,
   },
   {
@@ -275,7 +275,7 @@ export default [
     category: "Lamp",
     rating: 4.4,
     unitsLeft: 12,
-    imageUri: require("@/assets/images/lamp-5.png"),
+    imageUri: "lamp-5.png",
     price: 88,
   },
   {
@@ -284,7 +284,7 @@ export default [
     category: "Lamp",
     rating: 4.2,
     unitsLeft: 13,
-    imageUri: require("@/assets/images/lamp-7.png"),
+    imageUri: "lamp-7.png",
     price: 70,
   },
 ];

@@ -32,7 +32,10 @@ const EditShippingOptions = ({ isOpen, closeModal, chooseOption, option, options
         >
             <View style={styles.container}>
                 <View style={styles.head}>
-                    <GoBack label="Choose Shipping Type" />
+                    <GoBack 
+                        label="Choose Shipping Type"
+                        handlePress={closeModal}
+                    />
                 </View>
                 <ScrollView style={styles.view}>
                     <View style={styles.body}>

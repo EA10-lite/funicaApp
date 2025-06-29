@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ShippingAddress } from "@/components/checkout";
-import { Button, GoBack } from "@/components/main";
+import { Button, GoBack, NoResult } from "@/components/main";
 import { useSession } from "@/context/AuthContext";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { EditAddress as EditAddressModal } from "@/components/modals";
@@ -27,20 +27,30 @@ const EditAddress = () => {
                     <GoBack label="Edit Address" />
                 </View>
 
-                <ScrollView style={styles.view}>
-                    <View style={styles.body}>
-                        { user?.address.map((address, index)=> (
-                            <View style={styles.field} key={index}>
-                                <ShippingAddress 
-                                    address={address}
-                                    key={index}
-                                    isEditable={true}
-                                    handleClick={()=> handleSelectClick(address)} 
-                                />
-                            </View>
-                        ))}
+                {user && user?.address?.length > 0 ? (
+                    <ScrollView style={styles.view}>
+                        <View style={styles.body}>
+                            { user?.address.map((address, index)=> (
+                                <View style={styles.field} key={index}>
+                                    <ShippingAddress 
+                                        address={address}
+                                        key={index}
+                                        isEditable={true}
+                                        handleClick={()=> handleSelectClick(address)} 
+                                    />
+                                </View>
+                            ))}
+                        </View>
+                    </ScrollView>
+                ) : (
+                    <View style={styles.view}>
+                        <NoResult 
+                            title="No Address"
+                            subtitle="You've not added any address yet, click on the button below to add new address"
+                        />
                     </View>
-                </ScrollView>
+                )}
+
 
                 <View style={styles.footer}>
                     <Button 

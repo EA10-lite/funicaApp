@@ -2,6 +2,7 @@ import React from "react";
 import { OrderDTO } from "@/dto/product.dto";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import { Image } from "expo-image";
+import { imageMap } from "@/dto/images";
 
 interface OrderCardProps extends OrderDTO {
   handleClick?:   ()=> void;
@@ -22,7 +23,7 @@ const OrderCard = ({
   return (
     <View style={styles.card}>
       <View style={styles.imgContainer}>
-        <Image source={imageUri} style={styles.image} />
+        <Image source={imageMap[imageUri]} style={styles.image} />
       </View>
       <View style={styles.details}>
         <Text style={styles.title}>{title}</Text>

@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 64,
         paddingHorizontal: 24,
+        paddingBottom: 16,
         zIndex: 10,
     },
     label: {

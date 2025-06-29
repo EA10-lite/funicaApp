@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import Logo from "./Logo";
 
 type PageHeaderProps = {
     pageTitle:  string;
@@ -8,22 +7,25 @@ type PageHeaderProps = {
 
 const PageHeader = ({ pageTitle } : PageHeaderProps) => {
     return (
-        <View style={styles.header}>
-            <Logo variant="dark" size='xs' />
+        <View style={styles.container}>
             <Text style={styles.title}>{ pageTitle }</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    header: {
+    container: {
+        height: 100,
+        backgroundColor: "#fff",
         alignItems: 'center',
-        flexDirection: 'row',
+        justifyContent: "flex-end",
         gap: 20,
-        paddingVertical: 24,
+        borderBottomColor: "#e2e2e2",
+        borderBottomWidth: 1,
+        paddingBottom: 12,
     },
     title: {
-        fontSize: 24,
+        fontSize: 16,
         fontWeight: '700',
     },
 })

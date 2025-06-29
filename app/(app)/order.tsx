@@ -24,9 +24,9 @@ const Order = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <PageHeader pageTitle="My Order" />
       <View style={styles.orderContainer}>
-        <PageHeader pageTitle="My Order" />
         <View style={styles.tab}>
           <PageTab 
             tabs={["active", "completed"]}
@@ -84,7 +84,7 @@ const Order = () => {
           item={selectedItem}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -98,14 +98,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   tab: {
-    marginBottom: 24,
+    marginTop: 24,
   },
   list: {},
   emptyorder: {
     flex: 1,
     width: '100%',
   },
-  orderItems: {},
+  orderItems: {
+    paddingVertical: 24,
+  },
 })
 
 
