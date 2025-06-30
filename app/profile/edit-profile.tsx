@@ -1,4 +1,4 @@
-import { Field } from "@/components/forms";
+import { Field, Select } from "@/components/forms";
 import { Button, GoBack } from "@/components/main";
 import { useSession } from "@/context/AuthContext";
 import { Formik } from "formik";
@@ -42,6 +42,12 @@ const EditProfile = () => {
                                         name="email"
                                         type="email-address"
                                         label="Email Address"
+                                    />
+                                    <Select 
+                                        name="country"
+                                        options={["Ghana", "Nigeria", "Kenya", "Uganda", "South Africa", "Congo"]}
+                                        placeholder=""
+                                        label="Country"
                                     />
                                 </View>
                             </ScrollView>

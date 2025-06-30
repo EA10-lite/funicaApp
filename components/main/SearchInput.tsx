@@ -3,23 +3,24 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { View, TextInput, StyleSheet, Pressable} from "react-native";
 import { Filter } from "../modals";
 import Loading from "./Loading";
+import { ProductDTO } from "@/dto/product.dto";
 
 type SearchInputProps = {
     placeholder?:   string;
-    name:           string;
     value:          string;
     handleChange:   (text: string) => void;
     isLoading:      boolean;
     hasFilter:      boolean;
+    results:        ProductDTO[];
 }
 
 const SearchInput = ({
     placeholder,
     value,
-    name,
     handleChange,
     isLoading,
     hasFilter,
+    results,
 } : SearchInputProps) => {
     const [openFilter, setOpenFilter] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
@@ -46,7 +47,7 @@ const SearchInput = ({
 
                 {isLoading ? (
                     <Loading size={16} color="#000" />
-                ) : hasFilter && (
+                ) : hasFilter && results.length > 0 && (
                     <Pressable onPress={()=> setOpenFilter(true)}>
                         <MaterialCommunityIcons name="tune-variant" size={20} color="black" />
                     </Pressable>

@@ -2,11 +2,11 @@ import React from "react";
 import { GoBack } from "@/components/main";
 import { ScrollView, StyleSheet, View } from "react-native";
 
-const CustomerService = ()=> {
+const Payment = ()=> {
     return (
         <View style={styles.container}>
             <View style={styles.head}>
-                <GoBack label={"Customer Service"} />
+                <GoBack label={"Payment"} />
             </View>
 
             <ScrollView style={styles.view}>
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CustomerService;
+export default Payment;

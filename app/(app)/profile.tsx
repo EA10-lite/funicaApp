@@ -62,7 +62,7 @@ const Profile = () => {
                   handlePress={()=> router.push("/profile/notification")} 
                 />
                 <Field 
-                  title="Securiry" 
+                  title="Security" 
                   icon="lock" 
                   handlePress={()=> router.push("/profile/settings")} 
                 />
@@ -81,12 +81,12 @@ const Profile = () => {
                 <Field 
                   title="Privacy Policy" 
                   icon="lock" 
-                  handlePress={()=> router.push("/profile/wishlist")} 
+                  handlePress={()=> router.push("/profile/privacy-policy")} 
                 />
                 <Field 
-                  title="Invite Friends" 
-                  icon="users" 
-                  handlePress={()=> router.push("/profile/wishlist")} 
+                  title="Payment" 
+                  icon="credit-card" 
+                  handlePress={()=> router.push("/profile/payment")} 
                 />
               </View>
               <View>
@@ -110,7 +110,7 @@ const Profile = () => {
   );
 }
 
-type FeatherIcon = "user" | "users" | "heart" | "lock" | "bell" | "map-pin" | "map" | "sun" | "info" | "log-out";
+type FeatherIcon = "user" | "users" | "heart" | "lock" | "bell" | "map-pin" | "map" | "sun" | "info" | "log-out" | "credit-card";
 
 type FieldProps = {
   title:        string;

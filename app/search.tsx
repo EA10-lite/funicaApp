@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView, StyleSheet, View, Text, ScrollView, Pressable, } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Pressable, } from "react-native";
 import { NoResult, SearchInput } from "@/components/main";
 import { Products } from "@/containers";
 import products from "@/data/products";
@@ -44,9 +44,9 @@ const Search = () => {
                         placeholder="search for furniture"
                         value={search}
                         handleChange={(value)=> setSearch(value)}
-                        name="search"
                         isLoading={isLoading}
                         hasFilter={true}
+                        results={results}
                     />
                 </View>
                 { search.length > 1 && !isLoading && (

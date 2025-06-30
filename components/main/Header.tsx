@@ -2,9 +2,11 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Avatar from "./Avatar";
 import { Ionicons } from "@expo/vector-icons";
-import SearchPlaceholder from "./SearchPlaceholder";
+import { useSession } from "@/context/AuthContext";
+import { getGreeting } from "@/utils/date";
 
 const Header = () => {
+    const { user } = useSession();
     return (
         <View style={styles.header}>
             <View style={styles.row}>
@@ -15,8 +17,8 @@ const Header = () => {
                     />
 
                     <View>
-                        <Text style={styles.subtitle}>Good Morning</Text>
-                        <Text style={styles.title}>Chris Sutton</Text>
+                        <Text style={styles.subtitle}>{getGreeting()}</Text>
+                        <Text style={styles.title}>{user?.firstName || user?.lastName}</Text>
                     </View>
                 </View>
                 <View style={styles.right}>
