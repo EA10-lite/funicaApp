@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Text, View, StyleSheet, ScrollView, Pressable, SafeAreaView} from "react-native";
-import { Image } from "expo-image";
-import { router } from "expo-router";
-import { Entypo, Feather, MaterialIcons } from "@expo/vector-icons";
 import { PageHeader } from "@/components/main";
 import { Logout } from "@/components/modals";
-import { useSession } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/AuthContext";
+import { Entypo, Feather, MaterialIcons } from "@expo/vector-icons";
+import { Image } from "expo-image";
+import { router } from "expo-router";
+import React, { useState } from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 const Profile = () => {
-  const { user } = useSession();
+  const { user } = useAuthContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (

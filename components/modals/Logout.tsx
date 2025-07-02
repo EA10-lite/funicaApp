@@ -1,8 +1,8 @@
-import React, { PropsWithChildren } from "react";
-import { View, StyleSheet, Text, Modal, Pressable } from "react-native";
-import { Button } from "../main";
-import { useSession } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/AuthContext";
 import { router } from "expo-router";
+import React, { PropsWithChildren } from "react";
+import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Button } from "../main";
 
 
 type LogoutProps = PropsWithChildren<{
@@ -11,7 +11,7 @@ type LogoutProps = PropsWithChildren<{
 }>;
 
 const Logout = ({ closeModal, isOpen } : LogoutProps) => {
-    const { signOut } = useSession();
+    const { signOut } = useAuthContext();
 
     const handleSignout = () => {
         signOut();

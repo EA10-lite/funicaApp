@@ -1,13 +1,13 @@
-import React, { useState } from "react";
 import { ShippingAddress } from "@/components/checkout";
 import { Button, GoBack, NoResult } from "@/components/main";
-import { useSession } from "@/context/AuthContext";
-import { ScrollView, StyleSheet, View } from "react-native";
 import { EditAddress as EditAddressModal } from "@/components/modals";
+import { useAuthContext } from "@/context/AuthContext";
 import { AddressDTO } from "@/dto/checkout.dto";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 const EditAddress = () => {
-    const { user } = useSession();
+    const { user } = useAuthContext();
     const [isOpen, setOpen] = useState<boolean>(false);
     const [selectedAddress, setSelectedAddress] = useState<AddressDTO | null>(null);
 

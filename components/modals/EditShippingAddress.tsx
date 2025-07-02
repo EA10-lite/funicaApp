@@ -1,10 +1,10 @@
+import { ShippingAddress } from "@/components/checkout";
+import { Button, GoBack } from "@/components/main";
+import { useAuthContext } from "@/context/AuthContext";
+import { AddressDTO } from "@/dto/checkout.dto";
 import React, { PropsWithChildren, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { Button, GoBack } from "@/components/main";
-import { ShippingAddress } from "@/components/checkout";
 import Modal from "react-native-modal";
-import { useSession } from "@/context/AuthContext";
-import { AddressDTO } from "@/dto/checkout.dto";
 
 type EditShippingAddressProps = PropsWithChildren<{
     isOpen:             boolean;
@@ -14,7 +14,7 @@ type EditShippingAddressProps = PropsWithChildren<{
 }>;
 
 const EditShippingAddress = ({ isOpen, closeModal, selectedAddress, chooseAddress}: EditShippingAddressProps) => {
-    const { user } = useSession();
+    const { user } = useAuthContext();
     const [isSelectedAddress, setIsSelectedAddress] = useState<AddressDTO>(selectedAddress);
 
     const handleClick = () => {

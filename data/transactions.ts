@@ -1,0 +1,82 @@
+export default [
+    {
+      id: '1',
+      title: "Shiny Wooden Chair",
+      rating: 4.7,
+      imageUri: "product-1.png",
+      price: 120,
+      status: "completed",
+      quantity: 2,
+      type: "order"
+    },
+    {
+      id: '2',
+      title: "Marble Flower Vase",
+      rating: 4.2,
+      imageUri: "vase-1.png",
+      price: 50,
+      status: "pending",
+      quantity: 4,
+      type: "top-up"
+    },
+    {
+      id: '5',
+      title: "Parabolic Reflector Lamp",
+      rating: 4.3,
+      imageUri: "lamp-1.png",
+      price: 80,
+      status: "ongoing",
+      quantity: 3,
+      type: "order"
+    },
+    {
+      id: '7',
+      title: "Mini Pottery Teapot",
+      rating: 4.4,
+      imageUri: "kitchen-1.png",
+      price: 40,
+      status: "cancelled",
+      quantity: 6,
+      type: "order"
+    },
+    {
+      id: '8',
+      title: "Mid Century Sofa",
+      rating: 4.0,
+      imageUri: "sofa-2.png",
+      price: 320,
+      status: "pending",
+      quantity: 6,
+      type: "order"
+    },
+    {
+      id: '9',
+      title: "Knife Package",
+      rating: 4.8,
+      imageUri: "product-2.png",
+      price: 60,
+      status: "completed",
+      quantity: 1,
+      type: "top-up"
+    },
+    {
+      id: '10',
+      title: "Teak Flower Vase",
+      rating: 4.1,
+      imageUri: "vase-3.png",
+      price: 55,
+      status: "pending",
+      quantity: 2,
+      type: "order"
+    },
+    {
+      id: '12',
+      title: "Clay Pottery Bowl",
+      rating: 4.3,
+      imageUri: "kitchen-4.png",
+      price: 35,
+      status: "completed",
+      quantity: 4,
+      type: "order"
+    }
+  ];

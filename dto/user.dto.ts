@@ -5,7 +5,7 @@ export interface UserDTO {
     firstName:  string;
     lastName:   string;
     country:    string;
-    gender:     'Male' | 'Female';
+    gender:     string | 'Male' | 'Female';
     phone:      string;
     address:    AddressDTO[];
 }

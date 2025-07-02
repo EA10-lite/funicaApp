@@ -1,12 +1,13 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import Avatar from "./Avatar";
-import { Ionicons } from "@expo/vector-icons";
-import { useSession } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/AuthContext";
 import { getGreeting } from "@/utils/date";
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import Avatar from "./Avatar";
 
 const Header = () => {
-    const { user } = useSession();
+    const { user } = useAuthContext();
     return (
         <View style={styles.header}>
             <View style={styles.row}>
@@ -22,7 +23,9 @@ const Header = () => {
                     </View>
                 </View>
                 <View style={styles.right}>
-                    <Ionicons name="notifications-outline" size={24} color="black" />
+                    <Pressable onPress={()=> router.push("/notification")}>
+                        <Ionicons name="notifications-outline" size={24} color="black" />
+                    </Pressable>
                 </View>
             </View>
         </View>

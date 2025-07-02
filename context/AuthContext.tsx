@@ -1,42 +1,33 @@
-import { use, createContext, type PropsWithChildren, useState } from 'react';
-import { useStorageState } from '@/hooks/useStorageState';
 import { UserDTO } from '@/dto/user.dto';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
-const AuthContext = createContext<{
-    signIn: () => void;
-    signOut: () => void;
-    setUser: (data: UserDTO) => void;
-    user:   UserDTO | null;
-    session?: string | null;
-    isLoggedIn?: boolean;
-    isLoading: boolean;
-}>({
-    signIn: () => null,
-    signOut: () => null,
-    setUser: (data: UserDTO) => null,
-    session: null,
-    user: null,
-    isLoading: false,
-    isLoggedIn: false,
-});
-
-export function useSession() {
-    const value = use(AuthContext);
-    if (!value) {
-        throw new Error('useSession must be wrapped in a <SessionProvider />');
-    }
-
-    return value;
+interface AuthContextType {
+    signIn:     () => void,
+    signOut:    () => void,
+    setUser:    (data: UserDTO) => void,
+    user:       UserDTO | null,
+    isLoggedIn: boolean,
+    loading:    boolean;
 }
 
-export function SessionProvider({ children }: PropsWithChildren) {
-    const [[isLoading, session], setSession] = useStorageState('session');
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const useAuthContext = (): AuthContextType => {
+    const context = useContext(AuthContext);
+    if (!context) {
+      throw new Error("useFavoriteContext must be used within a FavoriteProvider");
+    }
+    return context;
+};
+
+const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [user, setUser] = useState<UserDTO | null>(null);
 
-    const handleLogin = () => {
+    const signIn = async () => {
         setIsLoggedIn(true);
-        setUser({
+        const data = {
             firstName: "Emmanuel",
             lastName: "Anyigor",
             country: "Nigeria",
@@ -61,27 +52,56 @@ export function SessionProvider({ children }: PropsWithChildren) {
                     address: "Unilag Road Akoka Yaba",
                 }
             ]
-        });
+        };
+
+        setUser(data);
+        await AsyncStorage.setItem("user", JSON.stringify(data));
     }
 
+    const signOut = async () => {
+        await AsyncStorage.removeItem("user");
+        setUser(null);
+        setIsLoggedIn(false);
+    }
+
+    const [loading, setLoading] = useState(true);
+    const getUser = async () => {
+        try {
+            const storedUser = await AsyncStorage.getItem("user");
+            if(storedUser) {
+                setUser(JSON.parse(storedUser));
+                setIsLoggedIn(true);
+            }
+            else {
+                setIsLoggedIn(false);
+            }
+        } catch (error) {
+
+        }finally {
+            setLoading(false);
+        }
+    }
+
+
+    useEffect(()=> {
+        getUser();
+    },[])
+
     return (
-        <AuthContext
+        <AuthContext.Provider
             value={{
-                signIn: () => {
-                    handleLogin();
-                    setSession('abc');  
-                },
-                signOut: () => {
-                    setSession(null);
-                },
                 user,
                 setUser,
-                session,
-                isLoading,
+                signIn,
+                signOut,
                 isLoggedIn,
+                loading,
             }}
         >
             {children}
-        </AuthContext>
+        </AuthContext.Provider>
     );
 }
+
+
+export default AuthProvider;

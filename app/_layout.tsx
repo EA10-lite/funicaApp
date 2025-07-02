@@ -1,11 +1,10 @@
-import React from 'react';
-import { SessionProvider } from '@/context/AuthContext';
+import { AuthProvider, CartProvider, FavoritesProvider } from '@/context';
 import { Stack } from 'expo-router';
-import { FavoritesProvider, CartProvider } from '@/context';
+import React from 'react';
 
 export default function RootLayout() {
   return (
-    <SessionProvider>
+    <AuthProvider>
       <CartProvider>
         <FavoritesProvider>
           <Stack screenOptions={{ headerShown: false }}>
@@ -18,6 +17,6 @@ export default function RootLayout() {
           </Stack>
         </FavoritesProvider>
       </CartProvider>
-    </SessionProvider>
+    </AuthProvider>
   );
 }

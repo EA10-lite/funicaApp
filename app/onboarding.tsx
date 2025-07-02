@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import { Button } from "@/components/main";
-import { Image } from "expo-image";
-import { View, StyleSheet, Text, ImageSourcePropType } from "react-native";
-import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Image } from "expo-image";
+import { router } from "expo-router";
+import React, { useState } from "react";
+import { ImageSourcePropType, StyleSheet, Text, View } from "react-native";
 
 const onboardingImage1 = require("@/assets/images/img-1.jpg");
 const onboardingImage2 = require("@/assets/images/img-3.jpg");
@@ -34,7 +34,7 @@ const Onboarding = () => {
             setStep(prevStep => prevStep + 1);
         }
         else {
-            AsyncStorage.setItem('isLoggedIn', 'true');
+            AsyncStorage.setItem('isOnboarded', 'true');
             router.replace("/auth");
         }
     }

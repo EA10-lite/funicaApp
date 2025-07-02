@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useCartContext } from "@/context/CartContext";
-import { Button, GoBack } from "@/components/main";
 import { MiniProductCard } from "@/components/cards";
 import { ShippingAddress, ShippingOption } from "@/components/checkout";
-import { useSession } from "@/context/AuthContext";
+import { Button, GoBack } from "@/components/main";
 import { EditShippingAddress, EditShippingOptions } from "@/components/modals";
+import { useAuthContext } from "@/context/AuthContext";
+import { useCartContext } from "@/context/CartContext";
 import { AddressDTO, ShippingOptionDTO } from "@/dto/checkout.dto";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 const shippingOptions = [
     {
@@ -43,7 +43,7 @@ const Checkout = () => {
     const [isOpen2, setIsOpen2] = useState<boolean>(false);
 
     const { cart } = useCartContext();
-    const { user } = useSession();
+    const { user } = useAuthContext();
 
     const [selectedAddress, setSelectedAddress] = useState<AddressDTO>(user?.address[0] || { type: "No Address", address: "Plese add address."});
     const [selectedOption, setSelectedOption] = useState<ShippingOptionDTO>(shippingOptions[0]);
@@ -119,6 +119,7 @@ const Checkout = () => {
                     <Button 
                         label="Procceed to checkout"
                         variant="dark"
+                        href="/checkout/payment"
                     />
                 </View>
             </View>

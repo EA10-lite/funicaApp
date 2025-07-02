@@ -1,11 +1,11 @@
-import React from "react";
-import { View, StyleSheet, Text} from "react-native";
-import { GoBack, LoginWithSocials, Logo, OrDivider } from "@/components/main";
-import { Formik } from "formik";
-import { signup_schema } from "@/validations/auth";
 import { Field, Submit } from "@/components/forms";
+import { GoBack, LoginWithSocials, Logo, OrDivider } from "@/components/main";
+import { useAuthContext } from "@/context/AuthContext";
+import { signup_schema } from "@/validations/auth";
 import { Link, useRouter } from "expo-router";
-import { useSession } from "@/context/AuthContext";
+import { Formik } from "formik";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 type signupProps = {
     email:      string;
@@ -14,7 +14,7 @@ type signupProps = {
 
 const Signin = () => {
     const router = useRouter();
-    const { signIn } = useSession();
+    const { signIn } = useAuthContext();
 
     const handleSubmit = async (values: signupProps) => {
         signIn();

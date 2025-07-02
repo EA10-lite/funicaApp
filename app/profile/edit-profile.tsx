@@ -1,12 +1,12 @@
 import { Field, Select } from "@/components/forms";
 import { Button, GoBack } from "@/components/main";
-import { useSession } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/AuthContext";
 import { Formik } from "formik";
 import React from "react";
 import { ScrollView, StyleSheet, View, } from "react-native";
 
 const EditProfile = () => {
-    const { user } = useSession();
+    const { user } = useAuthContext();
 
     return (
         <View style={styles.container}>
