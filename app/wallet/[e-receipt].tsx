@@ -1,4 +1,5 @@
 import { GoBack } from "@/components/main";
+import { BarCodeScanner, Receipt } from "@/components/wallet";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 
@@ -11,6 +12,13 @@ const EReceipt = () => {
 
             <ScrollView style={styles.view} showsVerticalScrollIndicator={false}>
                 <View style={styles.body}>
+                    <BarCodeScanner />
+                    
+                    <Receipt 
+                        price={100}
+                        shippingFee={25}
+                        total={125}
+                    />
                 </View>
             </ScrollView>
         </View>
@@ -20,7 +28,6 @@ const EReceipt = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
     },
     head: {
         marginBottom: 24,
@@ -32,7 +39,7 @@ const styles = StyleSheet.create({
     body: {
         paddingHorizontal: 24,
         flex: 1,
-        paddingBottom: 64,
+        paddingBottom: 88,
     }
 });
 
