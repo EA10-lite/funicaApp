@@ -1,5 +1,5 @@
-import { GoBack } from "@/components/main";
-import { BarCodeScanner, Receipt } from "@/components/wallet";
+import { GoBack } from "@/src/components/main";
+import { BarCodeScanner, Receipt } from "@/src/components/wallet";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

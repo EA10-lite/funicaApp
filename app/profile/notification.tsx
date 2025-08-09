@@ -1,5 +1,5 @@
 import React from "react";
-import { GoBack, Toggle } from "@/components/main";
+import { GoBack, Toggle } from "@/src/components/main";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 const Notification = ()=> {

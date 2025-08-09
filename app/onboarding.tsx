@@ -1,4 +1,4 @@
-import { Button } from "@/components/main";
+import { Button } from "@/src/components/main";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Image } from "expo-image";
 import { router } from "expo-router";

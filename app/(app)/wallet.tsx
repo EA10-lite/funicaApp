@@ -1,6 +1,6 @@
-import { CreditCard, TransactionCard } from "@/components/cards";
-import { PageHeader } from "@/components/main";
-import transactions from "@/data/transactions";
+import { CreditCard, TransactionCard } from "@/src/components/cards";
+import { PageHeader } from "@/src/components/main";
+import transactions from "@/src/data/transactions";
 import { Link } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";

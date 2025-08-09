@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     modalContainer: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#000000aa',
+        backgroundColor: '#2354A4aa',
     },
     modalContent: {
         width: '100%',

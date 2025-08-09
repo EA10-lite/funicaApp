@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { GoBack, NoResult } from "@/components/main";
-import products from "@/data/products";
+import { GoBack, NoResult } from "@/src/components/main";
+import products from "@/src/data/products";
 import { Products } from "@/containers";
 import { CustomScrollView } from "@/layout";
 

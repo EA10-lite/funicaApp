@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Category } from "@/components/cards";
-import categories from "@/data/categories";
+import { Category } from "@/src/components/cards";
+import categories from "@/src/data/categories";
 
 
 const Categories = () => {

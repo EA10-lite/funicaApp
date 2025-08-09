@@ -1,6 +1,6 @@
-import { TransactionCard } from "@/components/cards";
-import { GoBack } from "@/components/main";
-import transactions from "@/data/transactions";
+import { TransactionCard } from "@/src/components/cards";
+import { GoBack } from "@/src/components/main";
+import transactions from "@/src/data/transactions";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

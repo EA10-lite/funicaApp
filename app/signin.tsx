@@ -1,5 +1,5 @@
-import { Field, Submit } from "@/components/forms";
-import { GoBack, LoginWithSocials, Logo, OrDivider } from "@/components/main";
+import { Field, Submit } from "@/src/components/forms";
+import { GoBack, LoginWithSocials, Logo, OrDivider } from "@/src/components/main";
 import { useAuthContext } from "@/context/AuthContext";
 import { signup_schema } from "@/validations/auth";
 import { Link, useRouter } from "expo-router";

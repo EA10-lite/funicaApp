@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { GoBack } from "@/components/main";
-import { PageTab } from "@/components/tabs";
-import { Contact, FAQ } from "@/components/about";
+import { GoBack } from "@/src/components/main";
+import { PageTab } from "@/src/components/tabs";
+import { Contact, FAQ } from "@/src/components/about";
 
 const HelpCenter = () => {
     const [activeTab, setActiveTab] = useState<string>("faq");

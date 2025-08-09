@@ -1,4 +1,4 @@
-import { GoBack, NoResult } from "@/components/main";
+import { GoBack, NoResult } from "@/src/components/main";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import { NoResult, PageHeader } from "@/components/main";
-import { OrderCard } from "@/components/cards";
-import { PageTab } from "@/components/tabs";
+import { NoResult, PageHeader } from "@/src/components/main";
+import { OrderCard } from "@/src/components/cards";
+import { PageTab } from "@/src/components/tabs";
 import { OrderDTO } from "@/dto/product.dto";
-import { Review, TrackOrder } from "@/components/modals";
-import data from "@/data/orders";
+import { Review, TrackOrder } from "@/src/components/modals";
+import data from "@/src/data/orders";
 
 const Order = () => {
   const [activeTab, setActiveTab] = useState<string>("active");

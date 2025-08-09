@@ -1,5 +1,5 @@
-import { PageHeader } from "@/components/main";
-import { Logout } from "@/components/modals";
+import { PageHeader } from "@/src/components/main";
+import { Logout } from "@/src/components/modals";
 import { useAuthContext } from "@/context/AuthContext";
 import { Entypo, Feather, MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";

@@ -1,7 +1,7 @@
-import { Header, SearchPlaceholder } from "@/components/main";
+import { Header, SearchPlaceholder } from "@/src/components/main";
 import { StyleSheet, SafeAreaView, View} from "react-native";
 import { Categories, Products, SpecialOffers, Filters } from "@/containers";
-import products from "@/data/products";
+import products from "@/src/data/products";
 import { CustomScrollView } from "@/layout";
 
 const Index = () => {

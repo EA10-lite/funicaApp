@@ -1,5 +1,5 @@
 import React from "react";
-import { GoBack } from "@/components/main";
+import { GoBack } from "@/src/components/main";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 const Settings = ()=> {

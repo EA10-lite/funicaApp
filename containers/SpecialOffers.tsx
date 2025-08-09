@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
-import { SpecialOffer } from "@/components/cards";
-import offers from "@/data/offers";
+import { SpecialOffer } from "@/src/components/cards";
+import offers from "@/src/data/offers";
 
 const SpecialOffers = () => {
     return (

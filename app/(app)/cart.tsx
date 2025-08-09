@@ -1,5 +1,5 @@
-import { CartCard } from "@/components/cards";
-import { Button, NoResult, PageHeader } from "@/components/main";
+import { CartCard } from "@/src/components/cards";
+import { Button, NoResult, PageHeader } from "@/src/components/main";
 import { useCartContext } from "@/context/CartContext";
 import { CustomScrollView } from "@/layout";
 import { StyleSheet, Text, View } from "react-native";

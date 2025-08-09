@@ -1,4 +1,4 @@
-import { SplashScreen } from '@/components/screens';
+import { SplashScreen } from '@/src/components/screens';
 import { useAuthContext } from '@/context/AuthContext';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";

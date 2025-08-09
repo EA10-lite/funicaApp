@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { Button, Favorites, GoBack } from "@/components/main";
-import products from "@/data/products";
+import { Button, Favorites, GoBack } from "@/src/components/main";
+import products from "@/src/data/products";
 import { Image } from "expo-image";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useCartContext } from "@/context/CartContext";

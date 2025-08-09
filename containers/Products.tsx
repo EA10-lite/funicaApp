@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductCard } from "@/components/cards";
+import { ProductCard } from "@/src/components/cards";
 import { ProductDTO } from "@/dto/product.dto";
 import { View, StyleSheet } from "react-native";
 

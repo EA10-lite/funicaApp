@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet, Text} from "react-native";
-import { GoBack, Logo, } from "@/components/main";
+import { GoBack, Logo, } from "@/src/components/main";
 import { Formik } from "formik";
 import { reset_password_schema } from "@/validations/auth";
-import { Field, Submit } from "@/components/forms";
+import { Field, Submit } from "@/src/components/forms";
 
 type signupProps = {
     newPassword:          string;

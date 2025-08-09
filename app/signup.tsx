@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { GoBack, LoginWithSocials, Logo, OrDivider } from "@/components/main";
+import { GoBack, LoginWithSocials, Logo, OrDivider } from "@/src/components/main";
 import { Formik } from "formik";
 import { signup_schema } from "@/validations/auth";
-import { Checkbox, Field, Submit } from "@/components/forms";
+import { Checkbox, Field, Submit } from "@/src/components/forms";
 import { Link } from "expo-router";
 
 type signupProps = {

@@ -1,6 +1,6 @@
-import { PaymentOption } from "@/components/checkout";
-import { Button, GoBack } from "@/components/main";
-import { EnterPin } from "@/components/modals";
+import { PaymentOption } from "@/src/components/checkout";
+import { Button, GoBack } from "@/src/components/main";
+import { EnterPin } from "@/src/components/modals";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 

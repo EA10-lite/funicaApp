@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, LoginWithSocials, OrDivider } from "@/components/main";
+import { Button, LoginWithSocials, OrDivider } from "@/src/components/main";
 import { Image } from "expo-image";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";

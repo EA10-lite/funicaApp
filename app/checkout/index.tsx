@@ -1,7 +1,7 @@
-import { MiniProductCard } from "@/components/cards";
-import { ShippingAddress, ShippingOption } from "@/components/checkout";
-import { Button, GoBack } from "@/components/main";
-import { EditShippingAddress, EditShippingOptions } from "@/components/modals";
+import { MiniProductCard } from "@/src/components/cards";
+import { ShippingAddress, ShippingOption } from "@/src/components/checkout";
+import { Button, GoBack } from "@/src/components/main";
+import { EditShippingAddress, EditShippingOptions } from "@/src/components/modals";
 import { useAuthContext } from "@/context/AuthContext";
 import { useCartContext } from "@/context/CartContext";
 import { AddressDTO, ShippingOptionDTO } from "@/dto/checkout.dto";

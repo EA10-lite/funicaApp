@@ -1,5 +1,5 @@
-import { Field, Select } from "@/components/forms";
-import { Button, GoBack } from "@/components/main";
+import { Field, Select } from "@/src/components/forms";
+import { Button, GoBack } from "@/src/components/main";
 import { useAuthContext } from "@/context/AuthContext";
 import { Formik } from "formik";
 import React from "react";

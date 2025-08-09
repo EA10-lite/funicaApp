@@ -1,50 +1,44 @@
-import { useAuthContext } from "@/context/AuthContext";
-import { router } from "expo-router";
 import React, { PropsWithChildren } from "react";
-import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { View, StyleSheet, Text, Modal, Pressable } from "react-native";
 import { Button } from "../main";
+import { CategoryFilter, PriceRangeFilter, RatingFilter, SortFilter } from "../search";
 
 
-type LogoutProps = PropsWithChildren<{
+type ReviewProps = PropsWithChildren<{
     closeModal:     ()=> void;
     isOpen:         boolean;
 }>;
 
-const Logout = ({ closeModal, isOpen } : LogoutProps) => {
-    const { signOut } = useAuthContext();
-
-    const handleSignout = () => {
-        signOut();
-        router.replace("/auth");
-    }
+const Filter = ({ closeModal, isOpen, } : ReviewProps) => {
 
     return (
         <Modal animationType="slide" transparent={true} visible={isOpen}>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
                     <View style={styles.modalHeader}>
-                        <Text style={[styles.title, { color: "#fa0000" }]}>Logout</Text>
+                        <Text style={styles.title}>Sort & Filter</Text>
                     </View>
 
                     <View style={styles.modalBody}>
-                        <Text style={styles.title}>Are you sure you want to log out ?</Text>
+                        <CategoryFilter />
+                        <PriceRangeFilter />
+                        <SortFilter />
+                        <RatingFilter />
                     </View>
 
                     <View style={styles.modalFooter}>
                         <View style={styles.btnContainer}>
                             <Pressable onPress={closeModal} style={styles.cancelBtn}>
-                                <Text style={styles.btnText}>Cancel</Text>
+                                <Text style={styles.btnText}>Reset</Text>
                             </Pressable>
                         </View>
 
                         <View style={styles.btnContainer}>
                             <Button 
-                                label="Logout"
+                                label="Apply"
                                 variant="dark"
-                                onPress={handleSignout}
                             />
                         </View>
-
                     </View>
                 </View>
             </View>
@@ -56,7 +50,7 @@ const styles = StyleSheet.create({
     modalContainer: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#000000aa',
+        backgroundColor: '#2354A4aa',
     },
     modalContent: {
         width: '100%',
@@ -81,9 +75,14 @@ const styles = StyleSheet.create({
         fontWeight: '600', 
         textAlign: 'center',
     },
+    subtitle: {
+        fontSize: 14,
+        fontWeight: '400',
+        textAlign: 'center',
+        marginVertical: 16,
+    },
     modalBody: {
-        flexGrow: 1,
-        paddingVertical: 24,
+        paddingTop: 24,
         borderBottomWidth: 1,
         borderBlockColor: '#f3f3f3',
     },
@@ -91,9 +90,7 @@ const styles = StyleSheet.create({
         width: '50%',
     },
     cancelBtn: {
-        minWidth: '35%',
-        flexGrow: 1,
-        flex: 0.5,
+        width: '100%',
         backgroundColor: "#e7e7e7",
         paddingHorizontal: 16,
         paddingVertical: 18,
@@ -112,4 +109,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Logout;
+export default Filter;

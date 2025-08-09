@@ -1,6 +1,6 @@
-import { ShippingAddress } from "@/components/checkout";
-import { Button, GoBack, NoResult } from "@/components/main";
-import { EditAddress as EditAddressModal } from "@/components/modals";
+import { ShippingAddress } from "@/src/components/checkout";
+import { Button, GoBack, NoResult } from "@/src/components/main";
+import { EditAddress as EditAddressModal } from "@/src/components/modals";
 import { useAuthContext } from "@/context/AuthContext";
 import { AddressDTO } from "@/dto/checkout.dto";
 import React, { useState } from "react";

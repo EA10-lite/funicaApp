@@ -1,23 +1,24 @@
+import { ShippingAddress } from "@/src/components/checkout";
+import { Button, GoBack } from "@/src/components/main";
+import { useAuthContext } from "@/context/AuthContext";
+import { AddressDTO } from "@/dto/checkout.dto";
 import React, { PropsWithChildren, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import Modal from "react-native-modal";
-import { Button, GoBack } from "@/components/main";
-import { ShippingOption } from "@/components/checkout";
-import { ShippingOptionDTO } from "@/dto/checkout.dto";
 
-type EditShippingOptionProps = PropsWithChildren<{
+type EditShippingAddressProps = PropsWithChildren<{
     isOpen:             boolean;
-    option:             ShippingOptionDTO;
-    options:            ShippingOptionDTO[];
-    closeModal:         () => void;
-    chooseOption:       (option: ShippingOptionDTO) => void;
+    selectedAddress:    AddressDTO;
+    closeModal:         ()=> void;
+    chooseAddress:      (address: AddressDTO)=> void;
 }>;
 
-const EditShippingOptions = ({ isOpen, closeModal, chooseOption, option, options}: EditShippingOptionProps) => {
-    const [selectedOption, setSelectedOption] = useState<ShippingOptionDTO>(option);
+const EditShippingAddress = ({ isOpen, closeModal, selectedAddress, chooseAddress}: EditShippingAddressProps) => {
+    const { user } = useAuthContext();
+    const [isSelectedAddress, setIsSelectedAddress] = useState<AddressDTO>(selectedAddress);
 
     const handleClick = () => {
-        chooseOption(selectedOption);
+        chooseAddress(isSelectedAddress);
         closeModal();
     }
 
@@ -33,20 +34,20 @@ const EditShippingOptions = ({ isOpen, closeModal, chooseOption, option, options
             <View style={styles.container}>
                 <View style={styles.head}>
                     <GoBack 
-                        label="Choose Shipping Type"
+                        label="Shipping Address" 
                         handlePress={closeModal}
                     />
                 </View>
                 <ScrollView style={styles.view}>
                     <View style={styles.body}>
-                        { options.map((option, index)=> (
+                        { user?.address.map((address, index)=> (
                             <View style={styles.field} key={index}>
-                                <ShippingOption 
+                                <ShippingAddress 
+                                    address={address}
+                                    key={index}
                                     isEditable={false}
-                                    option={option}
-                                    iconName={option.iconName}
-                                    handleClick={()=> setSelectedOption(option)}
-                                    isSelected={selectedOption?.type === option.type}
+                                    handleClick={()=> setIsSelectedAddress(address)}
+                                    isSelected={address.type === isSelectedAddress.type} 
                                 />
                             </View>
                         ))}
@@ -92,4 +93,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default EditShippingOptions;
+export default EditShippingAddress;
